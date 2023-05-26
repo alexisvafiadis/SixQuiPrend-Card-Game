@@ -1,10 +1,15 @@
 package com.isep.sixquiprend.Core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Row {
     private final int MAX_NUMBER_OF_CARDS = 5;
     private List<Card> cards;
+
+    public Row() {
+        cards = new ArrayList<>();
+    }
 
     public boolean canAddCard(Card card) {
         // If the row is already full, the card cannot be added

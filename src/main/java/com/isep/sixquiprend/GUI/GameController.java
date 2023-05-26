@@ -2,11 +2,13 @@ package com.isep.sixquiprend.GUI;
 
 import com.isep.sixquiprend.Core.Card;
 import com.isep.sixquiprend.Core.Game;
+import com.isep.sixquiprend.Core.GameState;
 import com.isep.sixquiprend.Core.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -20,6 +22,8 @@ public class GameController {
     private VBox rowsBox;
     @FXML
     private HBox mainPlayerCardsBox;
+    @FXML
+    private ImageView lastCardOfPileImageView;
 
     private GameApplication application;
     private Game game;
@@ -35,7 +39,7 @@ public class GameController {
             VBox playerBox = (VBox) playersBox.getChildren().get(i);
             Player player = game.getPlayers().get(i);
             playerBox.setId(player.getName() + "Box");
-            ((Text) playerBox.getChildren().get(0)).setText(player.getName());
+            ((Text) ((HBox) playerBox.getChildren().get(0)).getChildren().get(1)).setText(player.getName());
             getBeefheadText(playerBox).setText(String.valueOf(player.getBeefHeadCount()));
             getBoxImageView(playerBox).setImage(application.getImage("cards/backside.png"));
         }
@@ -71,10 +75,16 @@ public class GameController {
     }
 
     @FXML
-    public void onCardChooseEventHandler(ActionEvent e) {
+    public void onCardChooseEventHandler(MouseEvent e) {
+        if (!(e.getEventType().equals(MouseEvent.MOUSE_CLICKED))) {
+            return;
+        }
+        if (!game.getGameState().equals(GameState.WAITING)) {
+            return;
+        }
         ImageView cardImageView = ((ImageView) e.getSource());
         int cardValue = Integer.parseInt(cardImageView.getId().substring(MAIN_PLAYER_CARD_ID_PREFIX.length()));
-
+        game.pickPlayerCard(cardValue);
     }
     public VBox getPlayerBox(String userName) {
         return ((VBox) playersBox.lookup("#" + userName + "Box"));
@@ -85,6 +95,6 @@ public class GameController {
     }
 
     public Text getBeefheadText(VBox vbox) {
-        return ((Text) vbox.getChildren().get(1));
+        return ((Text) ((HBox) vbox.getChildren().get(1)).getChildren().get(0));
     }
 }

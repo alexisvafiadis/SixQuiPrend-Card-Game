@@ -13,6 +13,7 @@ public class Player {
     protected int cardChoice;
 
     public Player(Game game, String name) {
+        this.game = game;
         this.name = name;
         cards = new ArrayList<>();
         cardChoice = 0;
@@ -37,8 +38,20 @@ public class Player {
         }
         this.hand = hand;
     }
-    public void playCard() {
-
+    public void pickCardByIndex(int index) {
+        Card card = hand.get(index);
+        game.getGameController().updatePlayerCard(this,card);
+        hand.remove(index);
+    }
+    public Integer getCardIndexByValue(int value) {
+        for (int i = 0 ; i < hand.size() ; i++) {
+            if (hand.get(i).getValue() == value) {
+                return i;
+            }
+            System.out.println(hand.get(i).getValue());
+            System.out.println(value);
+        }
+        return null;
     }
 
     public Row chooseRow() {

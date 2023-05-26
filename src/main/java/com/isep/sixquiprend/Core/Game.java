@@ -2,7 +2,6 @@ package com.isep.sixquiprend.Core;
 
 import com.isep.sixquiprend.GUI.GameApplication;
 import com.isep.sixquiprend.GUI.GameController;
-import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,7 +29,7 @@ public class Game {
         players.add(new Player(this,application.getPlayerUserName()));
         players.add(new Bot(this,"Bot 1",BOTS_DIFFICULTY));
         players.add(new Bot(this,"Bot 2",BOTS_DIFFICULTY));
-        players.add(new Bot(this,"Bot François",BOTS_DIFFICULTY));
+        players.add(new Bot(this,"BotTouron",BOTS_DIFFICULTY));
     }
 
     public void start() {
@@ -53,6 +52,7 @@ public class Game {
 
     public void startNewTurn() {
         //TODO : askForCardChoices();
+        gameState = GameState.WAITING;
     }
 
     public void continueTurn() {
@@ -123,6 +123,7 @@ public class Game {
 
         }
         setRows(allCardValues);
+        gameController.updateMainPlayerHand(getMainPlayer().getHand());
     }
 
     public void setRows(List<Integer> allCardValues) {
@@ -152,13 +153,14 @@ public class Game {
         }
     }
 
-    public void pickPlayerCard(Card card) {
-        for (int i = 0; i < players.size(); i++) {
+    public void pickPlayerCard(int cardValue) {
+        gameState = GameState.PLAYING;
+        System.out.println("Picking card " + cardValue);
+        getMainPlayer().pickCardByIndex(getMainPlayer().getCardIndexByValue(cardValue));
+        for (int i = 1; i < players.size(); i++) {
             Player player = players.get(i);
-            if (player instanceof Player) {
-
-            } else {
-                ((Bot) player).pickCard();
+            if (player instanceof Bot) {
+                player.pickCardByIndex(((Bot) player).decideCardIndex());
             }
         }
     }
@@ -193,5 +195,13 @@ public class Game {
 
     public List<Row> getRows() {
         return rows;
+    }
+
+    public Player getMainPlayer() {
+        return players.get(0);
+    }
+
+    public GameState getGameState() {
+        return gameState;
     }
 }

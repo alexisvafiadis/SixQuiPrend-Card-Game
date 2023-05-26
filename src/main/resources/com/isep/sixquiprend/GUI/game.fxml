@@ -8,288 +8,284 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="760.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.sixquiprend.GUI.GameController">
+<AnchorPane maxHeight="760.0" maxWidth="920.0" minHeight="760.0" minWidth="920.0" prefHeight="760.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.sixquiprend.GUI.GameController">
    <children>
-      <AnchorPane layoutY="841.0" prefHeight="130.0" prefWidth="960.0">
+      <VBox fx:id="rowsBox" layoutX="67.0" layoutY="214.0" prefHeight="406.0" prefWidth="455.0" spacing="5">
          <children>
-            <HBox layoutX="14.0" layoutY="-8.0" prefHeight="130.0" prefWidth="953.0" spacing="10">
+            <HBox prefHeight="97.5" prefWidth="960.0" spacing="30">
                <children>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/cards/backside.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/cards/backside.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/cards/backside.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/cards/backside.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/cards/backside.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/cards/backside.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/cards/backside.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/cards/backside.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/cards/backside.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/cards/backside.png" />
-                     </image>
-                  </ImageView>
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="4.0" layoutY="34.0" prefHeight="200.0" prefWidth="960.0">
-         <children>
-            <VBox fx:id="boxPlayer21" prefHeight="200.0" prefWidth="250.0" spacing="10" />
-            <HBox prefHeight="180.0" prefWidth="960.0">
+            <HBox prefHeight="97.5" prefWidth="200.0" spacing="30">
                <children>
-                  <VBox fx:id="boxPlayer1" prefHeight="200.0" prefWidth="250.0">
-                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="60.0" translateY="5.0">
-                                 <image>
-                                    <Image url="@../images/elements/profil.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fx:id="nameLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="RIGHT" wrappingWidth="160.0">
-                                 <font>
-                                    <Font name="System Bold" size="24.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fx:id="beefHeadTextPlayer1" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="RIGHT" wrappingWidth="126.39998626708984">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
-                                 <image>
-                                    <Image url="@../images/elements/Icon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </HBox>
-                        <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" translateX="85.0" />
-                     </children>
-                  </VBox>
-                  <VBox fx:id="boxPlayer2" prefHeight="200.0" prefWidth="250.0">
-                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="60.0" translateY="5.0">
-                                 <image>
-                                    <Image url="@../images/elements/profil.png" />
-                                 </image>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" textAlignment="RIGHT" wrappingWidth="160.0">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Text fx:id="beefHeadTextPlayer2" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="RIGHT" wrappingWidth="125.199951171875">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
-                                 <image>
-                                    <Image url="@../images/elements/Icon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </HBox>
-                        <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" translateX="85.0" />
-                     </children>
-                  </VBox>
-                  <VBox fx:id="boxPlayer3" prefHeight="100.0" prefWidth="250.0">
-                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="60.0" translateY="5.0">
-                                 <image>
-                                    <Image url="@../images/elements/profil.png" />
-                                 </image>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 3" textAlignment="RIGHT" wrappingWidth="160.0">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="28.0" prefWidth="135.0">
-                           <children>
-                              <Text fx:id="beefHeadTextPlayer3" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="RIGHT" wrappingWidth="126.80005645751953">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
-                                 <image>
-                                    <Image url="@../images/elements/Icon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </HBox>
-                        <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" translateX="85.0" />
-                     </children>
-                  </VBox>
-                  <VBox fx:id="boxPlayer4" prefHeight="100.0" prefWidth="250.0">
-                     <children>
-                        <HBox prefHeight="10.0" prefWidth="190.0">
-                           <children>
-                              <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="60.0" translateY="5.0">
-                                 <image>
-                                    <Image url="@../images/elements/profil.png" />
-                                 </image>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 4" textAlignment="RIGHT" wrappingWidth="160.0">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="28.0" prefWidth="135.0">
-                           <children>
-                              <Text fx:id="beefHeadTextPlayer4" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="RIGHT" wrappingWidth="126.80005645751953">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Text>
-                              <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
-                                 <image>
-                                    <Image url="@../images/elements/Icon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </HBox>
-                        <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" translateX="85.0" />
-                     </children>
-                  </VBox>
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
-         </children>
-      </AnchorPane>
-      <VBox layoutX="14.0" layoutY="251.0" prefHeight="532.0" prefWidth="766.0" spacing="5">
-         <children>
-            <HBox prefHeight="130.0" prefWidth="960.0" spacing="30">
+            <HBox prefHeight="97.5" prefWidth="200.0" spacing="30">
                <children>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-            </HBox>
-            <HBox prefHeight="130.0" prefWidth="200.0" spacing="30">
-               <children>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-            </HBox>
-            <HBox prefHeight="130.0" prefWidth="200.0" spacing="30">
-               <children>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
                </children></HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="30">
                <children>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
          </children>
       </VBox>
-      <Text layoutX="381.0" layoutY="819.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your deck" textAlignment="CENTER" wrappingWidth="206.39453125">
+      <Text layoutX="14.0" layoutY="713.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your deck" textAlignment="CENTER" wrappingWidth="138.40008544921875">
          <font>
-            <Font name="Yu Gothic Regular" size="36.0" />
+            <Font name="Yu Gothic Bold" size="28.0" />
          </font>
       </Text>
-      <AnchorPane layoutX="763.0" layoutY="386.0" prefHeight="200.0" prefWidth="190.0">
+      <AnchorPane layoutX="701.0" layoutY="192.0" prefHeight="200.0" prefWidth="190.0">
          <children>
-            <ImageView fitHeight="130.0" fitWidth="96.0" layoutX="45.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="97.5" fitWidth="72.0" layoutX="55.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/cards/backside.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="130.0" fitWidth="96.0" layoutX="45.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
+            <ImageView fitHeight="97.5" fitWidth="72.0" layoutX="55.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
                <image>
                   <Image url="@../images/cards/backside.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="130.0" fitWidth="96.0" layoutX="40.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" translateX="10.0">
+            <ImageView fitHeight="97.5" fitWidth="72.0" layoutX="48.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" translateX="15.0">
                <image>
                   <Image url="@../images/cards/backside.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="130.0" fitWidth="96.0" layoutX="45.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" translateX="15.0">
+            <ImageView fitHeight="97.5" fitWidth="72.0" layoutX="67.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/cards/backside.png" />
                </image>
             </ImageView>
-            <Text fx:id="deckLabel" layoutX="65.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="59.221435546875">
+            <ImageView fitHeight="97.5" fitWidth="72.0" layoutX="72.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cards/backside.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="deckLabel" layoutX="75.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="59.221435546875">
                <font>
                   <Font name="Arial Bold" size="36.0" />
                </font>
             </Text>
+            <Text fx:id="roundLabel" layoutX="41.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Round 1">
+               <font>
+                  <Font name="Yu Gothic Regular" size="30.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
-      <Text fx:id="roundLabel" layoutX="4.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Round 1">
-         <font>
-            <Font name="Yu Gothic Regular" size="30.0" />
-         </font>
-      </Text>
+      <HBox fx:id="playersBox" layoutX="2.0" layoutY="8.0" prefHeight="163.0" prefWidth="920.0">
+         <children>
+            <VBox fx:id="boxPlayer1" prefHeight="200.0" prefWidth="230.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="190.0">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="60.0">
+                           <image>
+                              <Image url="@../images/elements/profil.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="nameLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" translateX="72.0" wrappingWidth="145.99996948242188">
+                           <font>
+                              <Font name="Yu Gothic Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="28.0" prefWidth="135.0">
+                     <children>
+                        <Text fx:id="beefHeadTextPlayer1" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="RIGHT" wrappingWidth="115.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
+                           <image>
+                              <Image url="@../images/elements/Icon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" translateX="82.0" />
+               </children>
+            </VBox>
+            <VBox fx:id="boxPlayer2" prefHeight="200.0" prefWidth="230.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="190.0">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="60.0">
+                           <image>
+                              <Image url="@../images/elements/profil.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" translateX="72.0" wrappingWidth="138.79998779296875">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="28.0" prefWidth="135.0">
+                     <children>
+                        <Text fx:id="beefHeadTextPlayer2" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="RIGHT" wrappingWidth="115.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
+                           <image>
+                              <Image url="@../images/elements/Icon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" translateX="82.0" />
+               </children>
+            </VBox>
+            <VBox fx:id="boxPlayer3" prefHeight="100.0" prefWidth="230.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="190.0">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="60.0">
+                           <image>
+                              <Image url="@../images/elements/profil.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 3" translateX="72.0" wrappingWidth="138.40008544921875">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="28.0" prefWidth="135.0">
+                     <children>
+                        <Text fx:id="beefHeadTextPlayer3" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="RIGHT" wrappingWidth="115.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
+                           <image>
+                              <Image url="@../images/elements/Icon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" translateX="82.0" />
+               </children>
+            </VBox>
+            <VBox fx:id="boxPlayer4" prefHeight="100.0" prefWidth="230.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="10.0" prefWidth="190.0">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="60.0">
+                           <image>
+                              <Image url="@../images/elements/profil.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 4" translateX="72.0" wrappingWidth="139.9998779296875">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="28.0" prefWidth="135.0">
+                     <children>
+                        <Text fx:id="beefHeadTextPlayer4" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="RIGHT" wrappingWidth="115.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
+                           <image>
+                              <Image url="@../images/elements/Icon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="97.5" fitWidth="72.0" pickOnBounds="true" preserveRatio="true" translateX="82.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox fx:id="mainPlayerCardsBox" layoutX="174.0" layoutY="655.0" prefHeight="98.0" prefWidth="727.0" spacing="10">
+         <children>
+            <ImageView fitHeight="97.5" fitWidth="72.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cards/backside.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="97.5" fitWidth="72.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cards/backside.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="97.5" fitWidth="72.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cards/backside.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="97.5" fitWidth="72.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cards/backside.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="97.5" fitWidth="72.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cards/backside.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="97.5" fitWidth="72.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cards/backside.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="97.5" fitWidth="72.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cards/backside.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="97.5" fitWidth="72.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cards/backside.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="97.5" fitWidth="72.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cards/backside.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="97.5" fitWidth="72.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cards/backside.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

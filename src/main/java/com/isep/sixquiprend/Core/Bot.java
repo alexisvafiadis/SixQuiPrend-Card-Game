@@ -10,13 +10,11 @@ public class Bot extends Player{
         this.difficulty = difficulty;
     }
 
-    public Card pickCard() {
+    public Integer decideCardIndex() {
         if (difficulty == 0) {
             Random random = new Random();
             int randomCardIndex = random.nextInt(hand.size());
-            Card card = hand.get(randomCardIndex);
-            hand.remove(randomCardIndex);
-            return card;
+            return randomCardIndex;
         }
         else {
             int minCardValue = 104;
