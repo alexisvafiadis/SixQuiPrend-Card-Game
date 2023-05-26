@@ -286,7 +286,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <Text layoutX="4.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Round 1">
+      <Text fx:id="roundLabel" layoutX="4.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Round 1">
          <font>
             <Font name="Yu Gothic Regular" size="30.0" />
          </font>
