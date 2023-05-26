@@ -1,6 +1,7 @@
 package com.isep.sixquiprend.Core;
 
 import com.isep.sixquiprend.GUI.GameApplication;
+import com.isep.sixquiprend.GUI.GameController;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,21 +20,24 @@ public class Game {
     private int currentPlayerIndex;
     private List<Row> rows;
     private GameApplication application;
+    private GameController gameController;
 
     public Game(GameApplication application) {
         this.application = application;
-        start();
+        players = new ArrayList<>();
+        players.add(new Player(application.getPlayerUserName()));
+        players.add(new Bot("Bot 1"));
+        players.add(new Bot("Bot 2"));
+        players.add(new Bot("Bot François"));
     }
 
     public void start() {
-        players = new ArrayList<>();
-        rows = new ArrayList<>();
         gameState = GameState.STARTING;
         startNewRound();
     }
 
     public void startNewRound() {
-        distributeHands();
+        distributeCards();
         gameState = GameState.PLAYING;
         startNewTurn();
     }
@@ -95,7 +99,7 @@ public class Game {
         return null;
     }
 
-    public void distributeHands() {
+    public void distributeCards() {
 
         // Create a list with all possible card values
         List<Integer> allCardValues = new ArrayList<>();
@@ -116,6 +120,18 @@ public class Game {
             players.get(i).setHand(playerHand);
         }
 
+
+    }
+
+    public void setRows(List<Integer> allCardValues) {
+        rows = new ArrayList<>();
+        for (int j = 0; j < 4; j ++) {
+            rows.add(new Row());
+        }
+        for (int i = 0 ; i < rows.size() ; i++) {
+            int cardValue = allCardValues.get(i);
+
+        }
     }
 
     public void orderPlayers() {
@@ -134,6 +150,11 @@ public class Game {
         }
     }
 
+    public void pickPlayerCard(Card card) {
+        player.pickCard(card);
+
+    }
+
     public void end() {
         application.displayEndGamePopup();
     }
@@ -142,11 +163,23 @@ public class Game {
         return players.get(index);
     }
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
     public GameApplication getApplication() {
         return application;
     }
 
     public List<Integer> getPlayerOrder() {
         return playerOrder;
+    }
+
+    public GameController getGameController() {
+        return gameController;
+    }
+
+    public void setGameController(GameController gameController) {
+        this.gameController = gameController;
     }
 }

@@ -27,7 +27,7 @@ public class EndGamePopupController {
 
     @FXML
     public void initialize() {
-        endGameBackgroundImage.setImage(application.getImage())
+        endGameBackgroundImage.setImage(application.getImage(""));
     }
 
     @FXML

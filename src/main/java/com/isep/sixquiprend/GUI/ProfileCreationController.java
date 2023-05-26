@@ -19,6 +19,7 @@ public class ProfileCreationController {
         if (nameTextField.getText().isEmpty()) {
             return;
         }
+        application.setPlayerUserName(nameTextField.getText());
         application.startGame();
     }
 }

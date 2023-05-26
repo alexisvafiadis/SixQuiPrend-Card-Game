@@ -18,6 +18,7 @@ public class GameApplication extends javafx.application.Application {
     private String GAME_TITLE = "Six Qui Prend";
     private final String GAME_ROOT = "/com/isep/sixquiprend/";
     private Stage stage;
+    private String playerUserName;
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -43,11 +44,14 @@ public class GameApplication extends javafx.application.Application {
 
     public void startGame() {
         this.game = new Game(this);
-        setScene("Game.fxml", param -> this);
+        GameController gameController = new GameController(this, game);
+        game.setGameController(gameController);
+        setScene("game.fxml", param -> gameController);
+        game.start();
     }
 
     public void displayEndGamePopup() {
-        setScene("EndGamePopup.fxml", param -> new EndGamePopupController());
+        setScene("EndGamePopup.fxml", param -> new EndGamePopupController(this,game));
     }
 
     public void setScene(String name, Callback<Class<?>, Object> callback) {
@@ -127,5 +131,13 @@ public class GameApplication extends javafx.application.Application {
 
     public Stage getStage() {
         return stage;
+    }
+
+    public String getPlayerUserName() {
+        return playerUserName;
+    }
+
+    public void setPlayerUserName(String playerUserName) {
+        this.playerUserName = playerUserName;
     }
 }

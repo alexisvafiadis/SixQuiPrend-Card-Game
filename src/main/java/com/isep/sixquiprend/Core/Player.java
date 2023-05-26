@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    private String name;
-    private int ID;
-    private List<Card> hand;
-    private List<Card> cards;
-    private int beefHeadCount;
-    private int cardChoice;
+    protected String name;
+    protected int ID;
+    protected List<Card> hand;
+    protected List<Card> cards;
+    protected int beefHeadCount;
+    protected int cardChoice;
 
     public Player(String name) {
         this.name = name;
@@ -19,7 +19,7 @@ public class Player {
     }
 
     public void setHand(List<Card> hand) {
-        hand = hand;
+        this.hand = hand;
     }
     public void playCard() {
 
