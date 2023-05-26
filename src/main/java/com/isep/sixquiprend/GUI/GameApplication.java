@@ -114,7 +114,6 @@ public class GameApplication extends javafx.application.Application {
         String[] arrayWindowsToClose = new String[] {};
         List<String> listWindowsToClose = Arrays.asList(arrayWindowsToClose);
         ((AnchorPane) stage.getScene().getRoot()).getChildren().removeIf((node) -> node != null && listWindowsToClose.contains(node.getId()));
-        //((AnchorPane) stage.getScene().getRoot()).getChildren().remove(((AnchorPane) stage.getScene().getRoot()).getChildren().size() - 1);
     }
 
     public void closeSubWindowById(String id) {

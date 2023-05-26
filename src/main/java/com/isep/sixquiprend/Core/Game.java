@@ -2,12 +2,14 @@ package com.isep.sixquiprend.Core;
 
 import com.isep.sixquiprend.GUI.GameApplication;
 import com.isep.sixquiprend.GUI.GameController;
+import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Game {
+    private final int BOTS_DIFFICULTY = 0;
     private final int MAX_BEEFHEAD_COUNT = 66;
     private final int PLAYER_CARDS_PER_ROUND = 10;
     private final int MAX_PLAYER_COUNT = 10;
@@ -25,10 +27,10 @@ public class Game {
     public Game(GameApplication application) {
         this.application = application;
         players = new ArrayList<>();
-        players.add(new Player(application.getPlayerUserName()));
-        players.add(new Bot("Bot 1"));
-        players.add(new Bot("Bot 2"));
-        players.add(new Bot("Bot François"));
+        players.add(new Player(this,application.getPlayerUserName()));
+        players.add(new Bot(this,"Bot 1",BOTS_DIFFICULTY));
+        players.add(new Bot(this,"Bot 2",BOTS_DIFFICULTY));
+        players.add(new Bot(this,"Bot François",BOTS_DIFFICULTY));
     }
 
     public void start() {
@@ -117,10 +119,10 @@ public class Game {
                 int cardValue = allCardValues.get(j);
                 playerHand.add(new Card(cardValue));
             }
-            players.get(i).setHand(playerHand);
+            players.get(i).setAndOrderHand(playerHand);
+
         }
-
-
+        setRows(allCardValues);
     }
 
     public void setRows(List<Integer> allCardValues) {
@@ -129,8 +131,8 @@ public class Game {
             rows.add(new Row());
         }
         for (int i = 0 ; i < rows.size() ; i++) {
-            int cardValue = allCardValues.get(i);
-
+            int cardValue = allCardValues.get(80 + i);
+            rows.get(i).addCard(new Card(cardValue));
         }
     }
 
@@ -151,8 +153,14 @@ public class Game {
     }
 
     public void pickPlayerCard(Card card) {
-        player.pickCard(card);
+        for (int i = 0; i < players.size(); i++) {
+            Player player = players.get(i);
+            if (player instanceof Player) {
 
+            } else {
+                ((Bot) player).pickCard();
+            }
+        }
     }
 
     public void end() {
@@ -181,5 +189,9 @@ public class Game {
 
     public void setGameController(GameController gameController) {
         this.gameController = gameController;
+    }
+
+    public List<Row> getRows() {
+        return rows;
     }
 }
