@@ -70,7 +70,7 @@
       </AnchorPane>
       <AnchorPane layoutX="4.0" layoutY="34.0" prefHeight="200.0" prefWidth="960.0">
          <children>
-            <VBox fx:id="boxPlayer21" prefHeight="200.0" prefWidth="250.0" />
+            <VBox fx:id="boxPlayer21" prefHeight="200.0" prefWidth="250.0" spacing="10" />
             <HBox prefHeight="180.0" prefWidth="960.0">
                <children>
                   <VBox fx:id="boxPlayer1" prefHeight="200.0" prefWidth="250.0">
@@ -209,9 +209,9 @@
             </HBox>
          </children>
       </AnchorPane>
-      <VBox layoutY="254.0" prefHeight="522.0" prefWidth="694.0">
+      <VBox layoutX="14.0" layoutY="251.0" prefHeight="532.0" prefWidth="766.0" spacing="5">
          <children>
-            <HBox prefHeight="130.0" prefWidth="960.0">
+            <HBox prefHeight="130.0" prefWidth="960.0" spacing="30">
                <children>
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
@@ -221,7 +221,7 @@
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
-            <HBox prefHeight="130.0" prefWidth="200.0">
+            <HBox prefHeight="130.0" prefWidth="200.0" spacing="30">
                <children>
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
@@ -231,7 +231,7 @@
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
-            <HBox prefHeight="130.0" prefWidth="200.0">
+            <HBox prefHeight="130.0" prefWidth="200.0" spacing="30">
                <children>
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
@@ -240,7 +240,7 @@
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                </children></HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="30">
                <children>
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
@@ -279,7 +279,7 @@
                   <Image url="@../images/cards/backside.png" />
                </image>
             </ImageView>
-            <Text layoutX="65.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="59.221435546875">
+            <Text fx:id="deckLabel" layoutX="65.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="59.221435546875">
                <font>
                   <Font name="Arial Bold" size="36.0" />
                </font>
