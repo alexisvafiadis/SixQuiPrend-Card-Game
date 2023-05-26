@@ -12,54 +12,54 @@
    <children>
       <AnchorPane layoutY="841.0" prefHeight="130.0" prefWidth="960.0">
          <children>
-            <HBox fx:id="mainPlayerCardsBox" layoutX="14.0" layoutY="-8.0" prefHeight="130.0" prefWidth="953.0" spacing="10">
+            <HBox layoutX="14.0" layoutY="-8.0" prefHeight="130.0" prefWidth="953.0" spacing="10">
                <children>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/cards/backside.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/cards/backside.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/cards/backside.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/cards/backside.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/cards/backside.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/cards/backside.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/cards/backside.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/cards/backside.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/cards/backside.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="130.0" fitWidth="96.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/cards/backside.png" />
                      </image>
@@ -68,10 +68,10 @@
             </HBox>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="960.0">
+      <AnchorPane layoutX="4.0" layoutY="34.0" prefHeight="200.0" prefWidth="960.0">
          <children>
-            <VBox fx:id="boxPlayer21" prefHeight="200.0" prefWidth="250.0" />
-            <HBox fx:id="playersBox" prefHeight="180.0" prefWidth="960.0">
+            <VBox fx:id="boxPlayer21" prefHeight="200.0" prefWidth="250.0" spacing="10" />
+            <HBox prefHeight="180.0" prefWidth="960.0">
                <children>
                   <VBox fx:id="boxPlayer1" prefHeight="200.0" prefWidth="250.0">
                      <children>
@@ -209,9 +209,9 @@
             </HBox>
          </children>
       </AnchorPane>
-      <VBox fx:id="rowsBox" layoutX="4.0" layoutY="225.0" prefHeight="521.0" prefWidth="960.0">
+      <VBox layoutX="14.0" layoutY="251.0" prefHeight="532.0" prefWidth="766.0" spacing="5">
          <children>
-            <HBox prefHeight="130.0" prefWidth="960.0">
+            <HBox prefHeight="130.0" prefWidth="960.0" spacing="30">
                <children>
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
@@ -221,7 +221,7 @@
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
-            <HBox prefHeight="130.0" prefWidth="200.0">
+            <HBox prefHeight="130.0" prefWidth="200.0" spacing="30">
                <children>
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
@@ -231,7 +231,7 @@
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
-            <HBox prefHeight="130.0" prefWidth="200.0">
+            <HBox prefHeight="130.0" prefWidth="200.0" spacing="30">
                <children>
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
@@ -240,7 +240,7 @@
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                </children></HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="30">
                <children>
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="130.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true" />
@@ -255,6 +255,40 @@
       <Text layoutX="381.0" layoutY="819.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your deck" textAlignment="CENTER" wrappingWidth="206.39453125">
          <font>
             <Font name="Yu Gothic Regular" size="36.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="763.0" layoutY="386.0" prefHeight="200.0" prefWidth="190.0">
+         <children>
+            <ImageView fitHeight="130.0" fitWidth="96.0" layoutX="45.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cards/backside.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="130.0" fitWidth="96.0" layoutX="45.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" translateX="5.0">
+               <image>
+                  <Image url="@../images/cards/backside.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="130.0" fitWidth="96.0" layoutX="40.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" translateX="10.0">
+               <image>
+                  <Image url="@../images/cards/backside.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="130.0" fitWidth="96.0" layoutX="45.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" translateX="15.0">
+               <image>
+                  <Image url="@../images/cards/backside.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="deckLabel" layoutX="65.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="59.221435546875">
+               <font>
+                  <Font name="Arial Bold" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Text fx:id="roundLabel" layoutX="4.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Round 1">
+         <font>
+            <Font name="Yu Gothic Regular" size="30.0" />
          </font>
       </Text>
    </children>
