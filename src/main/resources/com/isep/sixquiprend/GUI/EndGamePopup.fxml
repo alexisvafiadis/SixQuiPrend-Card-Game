@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="endGamePopup" maxHeight="220.0" maxWidth="220.0" prefHeight="220.0" prefWidth="220.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.sixquiprend.GUI.EndGamePopupController">
-    <ImageView fx:id="backgroundImage" fitHeight="${endGamePopup.height}" fitWidth="${endGamePopup.width}" pickOnBounds="true" preserveRatio="false">
+    <ImageView fx:id="endGameBackgroundImage" fitHeight="${endGamePopup.height}" fitWidth="${endGamePopup.width}" pickOnBounds="true" preserveRatio="false">
         <image>
             <Image url="@../images/scene/WinPopup.png" />
         </image>
@@ -32,9 +32,9 @@
          </InnerShadow>
       </effect>
    </Button>
-   <Label fx:id="scoreLabel" alignment="CENTER" layoutX="84.0" layoutY="149.0" prefHeight="39.0" prefWidth="192.0" text="Your score: 30" textAlignment="CENTER" textFill="WHITE">
+   <Label fx:id="scoreLabel" alignment="CENTER" layoutX="84.0" layoutY="152.0" prefHeight="39.0" prefWidth="207.0" text="Your score: 30" textAlignment="CENTER" textFill="WHITE">
       <font>
-         <Font name="Verdana Bold" size="20.0" />
+         <Font name="Yu Gothic Medium" size="30.0" />
       </font>
    </Label>
    <Button fx:id="quitButton" layoutX="141.0" layoutY="303.0" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #9733f7;" text="Quit" textFill="WHITE">
