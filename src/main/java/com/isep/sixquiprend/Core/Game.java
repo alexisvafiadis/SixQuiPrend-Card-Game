@@ -14,14 +14,15 @@ public class Game {
     private final int minCardValue = 1;
     private final int maxCardValue = 104;
     private GameState gameState;
-    private int ID;
     private List<Player> players;
+    private List<Integer> playerOrder;
     private int currentPlayerIndex;
     private List<Row> rows;
     private GameApplication application;
 
     public Game(GameApplication application) {
         this.application = application;
+        start();
     }
 
     public void start() {
@@ -133,11 +134,19 @@ public class Game {
         }
     }
 
+    public void end() {
+        application.displayEndGamePopup();
+    }
+
     public Player getPlayer(int index) {
         return players.get(index);
     }
 
     public GameApplication getApplication() {
         return application;
+    }
+
+    public List<Integer> getPlayerOrder() {
+        return playerOrder;
     }
 }

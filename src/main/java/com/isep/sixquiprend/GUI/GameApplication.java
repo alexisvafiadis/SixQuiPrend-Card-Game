@@ -21,7 +21,6 @@ public class GameApplication extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        stage.setTitle("Hello!");
         stage.setTitle(GAME_TITLE);
         stage.setResizable(false);
         stage.getIcons().add(new Image(getClass().getResourceAsStream(GAME_ROOT  + "images/scene/Icon.png")));
@@ -35,12 +34,20 @@ public class GameApplication extends javafx.application.Application {
     }
 
     public void startMenu() {
-        this.game = new Game(this);
-        setScene("Start.fxml", param -> new StartController(game));
+        setScene("Start.fxml", param -> new StartController(this));
+    }
+
+    public void startProfileCreation() {
+        setScene("ProfileCreation.fxml", param -> new ProfileCreationController(this));
     }
 
     public void startGame() {
+        this.game = new Game(this);
         setScene("Game.fxml", param -> this);
+    }
+
+    public void displayEndGamePopup() {
+        setScene("EndGamePopup.fxml", param -> new EndGamePopupController());
     }
 
     public void setScene(String name, Callback<Class<?>, Object> callback) {
@@ -108,6 +115,10 @@ public class GameApplication extends javafx.application.Application {
 
     public void closeSubWindowById(String id) {
         ((AnchorPane) stage.getScene().getRoot()).getChildren().removeIf((node) -> node != null && node.getId().equals(id));
+    }
+
+    public Image getImage(String imagePath) {
+        return new Image(getClass().getResourceAsStream(GAME_ROOT + "images/" + imagePath));
     }
 
     public Game getGame() {
