@@ -9,7 +9,6 @@ public class Player {
     private List<Card> hand;
     private List<Card> cards;
     private int beefHeadCount;
-
     private int cardChoice;
 
     public Player(String name) {
@@ -62,6 +61,9 @@ public class Player {
     }
     public Card getCardChoice() {
         return cards.get(cardChoice);
+    }
+    public boolean hasChosenCard() {
+        return cardChoice != 0;
     }
 
     public int getCardChoiceNumber() {

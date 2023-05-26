@@ -1,8 +1,6 @@
 package com.isep.sixquiprend.Core;
 
-import com.isep.sixquiprend.Core.Card;
-import com.isep.sixquiprend.Core.Player;
-import com.isep.sixquiprend.Core.Row;
+import com.isep.sixquiprend.GUI.GameApplication;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,28 +9,64 @@ import java.util.List;
 public class Game {
     private final int MAX_BEEFHEAD_COUNT = 66;
     private final int PLAYER_CARDS_PER_ROUND = 10;
-    private final int nbJoueursMax = 10;
+    private final int MAX_PLAYER_COUNT = 10;
 
     private final int minCardValue = 1;
     private final int maxCardValue = 104;
+    private GameState gameState;
     private int ID;
     private List<Player> players;
-    private Player currentPlayer;
+    private int currentPlayerIndex;
     private List<Row> rows;
-    private List<Integer> allCardValues;
+    private GameApplication application;
 
-    public void play() {
-        while(!isGameEnded()) {
-            giveDecks();
-            while (!isRoundEnded()) {
-                //TODO : wait for card choices
-                orderPlayers();
-                for (Player player : players) {
-                    if (findRow(player.getCardChoice()) == null) {
-                        currentPlayer.pickUpRow(currentPlayer.chooseRow());
-                    }
-                }
+    public Game(GameApplication application) {
+        this.application = application;
+    }
+
+    public void start() {
+        players = new ArrayList<>();
+        rows = new ArrayList<>();
+        gameState = GameState.STARTING;
+        startNewRound();
+    }
+
+    public void startNewRound() {
+        distributeHands();
+        gameState = GameState.PLAYING;
+        startNewTurn();
+    }
+    public void finishRound() {
+        if (!isGameEnded()) {
+            //TODO : display results
+            //TODO : wait for next round
+            startNewRound();
+        }
+    }
+
+    public void startNewTurn() {
+        //TODO : askForCardChoices();
+    }
+
+    public void continueTurn() {
+        orderPlayers();
+        /*
+            if (findRow(player.getCardChoice()) == null) {
+                currentPlayer.pickUpRow(currentPlayer.chooseRow());
             }
+         */
+    }
+
+    public void askForNextTurnPlay() {
+
+    }
+
+    public void finishTurn() {
+        if (!isRoundEnded()) {
+            //TODO : display results
+            //TODO : wait for next turn
+
+            startNewTurn();
         }
     }
 
@@ -60,11 +94,7 @@ public class Game {
         return null;
     }
 
-    public void endRound() {}
-
-    public void displayResults() {}
-
-    public void giveDecks() {
+    public void distributeHands() {
 
         // Create a list with all possible card values
         List<Integer> allCardValues = new ArrayList<>();
@@ -85,8 +115,6 @@ public class Game {
             players.get(i).setHand(playerHand);
         }
 
-        //Clear card values to make space
-        allCardValues = null;
     }
 
     public void orderPlayers() {
@@ -103,5 +131,13 @@ public class Game {
                 }
             }
         }
+    }
+
+    public Player getPlayer(int index) {
+        return players.get(index);
+    }
+
+    public GameApplication getApplication() {
+        return application;
     }
 }

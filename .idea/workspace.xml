@@ -4,133 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b81fff9-28d1-4e45-afd4-c54e03e881d9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/Core/Card.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/Core/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/Core/GameState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/Core/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/Core/Row.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/GUI/HelloApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/GUI/HelloController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/FXML/hello-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/Background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/101.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/102.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/103.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/104.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/17.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/21.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/23.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/24.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/25.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/26.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/27.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/28.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/29.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/30.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/31.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/33.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/34.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/35.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/36.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/37.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/38.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/39.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/40.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/41.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/42.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/43.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/44.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/45.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/46.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/47.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/49.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/50.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/51.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/52.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/53.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/54.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/55.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/56.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/57.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/58.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/59.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/61.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/62.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/63.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/64.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/65.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/66.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/67.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/68.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/69.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/70.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/71.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/72.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/73.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/74.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/75.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/76.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/77.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/78.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/79.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/80.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/81.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/82.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/83.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/84.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/85.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/86.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/87.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/88.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/89.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/90.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/91.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/92.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/93.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/94.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/95.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/96.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/97.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/98.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/99.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/cards/backside.png" afterDir="false" />
+    <list default="true" id="0b81fff9-28d1-4e45-afd4-c54e03e881d9" name="Changes" comment="Base de la structure logique">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/GUI/EndGamePopupController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/GUI/StartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/GUI/EndGamePopup.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/GUI/Start.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/scene/Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/scene/LosePopup.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/scene/Start.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/scene/WinPopup.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/Core/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/Core/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/Core/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/Core/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/GUI/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/GUI/GameApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/sixquiprend/GUI/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/Background.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/isep/sixquiprend/images/scene/Background.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,11 +31,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2OvUhJ7FSW2NLGNdmP2HMFqkT71" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -155,17 +51,40 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/milen/IdeaProjects/SixQuiPrend/src/main/resources/com/isep/sixquiprend/images/cards"
+    "last_opened_file_path": "C:/Users/milen/IdeaProjects/SixQuiPrend/src/main/resources/com/isep/sixquiprend/images/scene"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\milen\IdeaProjects\SixQuiPrend\src\main\resources\com\isep\sixquiprend\images\cards" />
+      <recent name="C:\Users\milen\IdeaProjects\SixQuiPrend\src\main\resources\com\isep\sixquiprend\images\scene" />
+      <recent name="C:\Users\milen\IdeaProjects\SixQuiPrend\src\main\resources\com\isep\sixquiprend\images\backgrounds" />
       <recent name="C:\Users\milen\IdeaProjects\SixQuiPrend\src\main\resources\com\isep\sixquiprend\images" />
+      <recent name="C:\Users\milen\IdeaProjects\SixQuiPrend\src\main\resources\com\isep\sixquiprend\images\cards" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\milen\IdeaProjects\SixQuiPrend\src\main\resources\com\isep\sixquiprend\images\backgrounds" />
       <recent name="C:\Users\milen\IdeaProjects\SixQuiPrend\src\main\resources\com\isep\sixquiprend\FXML" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="GameApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.isep.sixquiprend.GUI.GameApplication" />
+      <module name="SixQuiPrend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.isep.sixquiprend.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GameApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -176,6 +95,25 @@
       <option name="presentableId" value="Default" />
       <updated>1682407549659</updated>
     </task>
+    <task id="LOCAL-00001" summary="Base de la structure logique">
+      <created>1682418255496</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1682418255496</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Base de la structure logique">
+      <created>1682418346754</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1682418346754</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Base de la structure logique" />
+    <option name="LAST_COMMIT_MESSAGE" value="Base de la structure logique" />
   </component>
 </project>
