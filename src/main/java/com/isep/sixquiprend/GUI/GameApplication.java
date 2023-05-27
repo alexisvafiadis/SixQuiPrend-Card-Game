@@ -20,7 +20,7 @@ public class GameApplication extends javafx.application.Application {
     private Stage stage;
     private String playerUserName;
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
 
         stage.setTitle(GAME_TITLE);
         stage.setResizable(false);

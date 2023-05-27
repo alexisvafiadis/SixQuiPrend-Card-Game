@@ -10,37 +10,26 @@ public class Player {
     protected List<Card> hand;
     protected List<Card> cards;
     protected int beefHeadCount;
-    protected int cardChoice;
+    protected Card cardChoice;
 
     public Player(Game game, String name) {
         this.game = game;
         this.name = name;
         cards = new ArrayList<>();
-        cardChoice = 0;
+        cardChoice = null;
         beefHeadCount = 0;
     }
 
     public void setAndOrderHand(List<Card> hand) {
-        // order the player's cards in ascending order
-        // useful for the bots to pick the best card, and to display the hand in the right order for the main player
-        for (int i = 0; i < hand.size() - 1; i++) {
-            for (int j = i + 1; j < hand.size(); j++) {
-                Card card1 = hand.get(i);
-                Card card2 = hand.get(j);
-
-                // If the value of the property for the first object is greater than the value of the property
-                // for the second object, swap them in the list
-                if (card1.getValue() > card2.getValue()) {
-                    hand.set(i, card2);
-                    hand.set(j, card1);
-                }
-            }
-        }
+        hand = game.orderCards(hand);
+        System.out.println("Distributing cards to " + name);
+        System.out.println("Hand size : " + hand.size());
         this.hand = hand;
     }
     public void pickCardByIndex(int index) {
         Card card = hand.get(index);
         game.getGameController().updatePlayerCard(this,card);
+        setCardChoice(card);
         hand.remove(index);
     }
     public Integer getCardIndexByValue(int value) {
@@ -54,15 +43,12 @@ public class Player {
         return null;
     }
 
-    public Row chooseRow() {
-        return null;
-    }
-
     public void pickUpRow(Row row) {
         for (Card card : row.getCards()) {
             cards.add(card);
             beefHeadCount += card.getBeefHead();
         }
+        game.getGameController().updatePlayerBeefHead(this);
     }
     public String getName() {
         return name;
@@ -84,17 +70,13 @@ public class Player {
         return beefHeadCount;
     }
 
-    public void setCardChoice(int cardChoice) {
-        this.cardChoice = cardChoice;
+    public void setCardChoice(Card card) {
+        this.cardChoice = card;
     }
     public Card getCardChoice() {
-        return cards.get(cardChoice);
+        return cardChoice;
     }
     public boolean hasChosenCard() {
-        return cardChoice != 0;
-    }
-
-    public int getCardChoiceNumber() {
-        return cardChoice;
+        return cardChoice != null;
     }
 }

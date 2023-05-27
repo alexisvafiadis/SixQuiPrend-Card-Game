@@ -13,6 +13,7 @@ public class Bot extends Player{
     public Integer decideCardIndex() {
         if (difficulty == 0) {
             Random random = new Random();
+            System.out.println("hand size : " + hand.size());
             int randomCardIndex = random.nextInt(hand.size());
             return randomCardIndex;
         }
@@ -34,5 +35,19 @@ public class Bot extends Player{
             }
             return null;
         }
+    }
+
+    public Row chooseRow() {
+        //Choose the row with the least beef heads
+        int minBeefHeadCount = 100;
+        Row chosenRow = null;
+        for (Row row : game.getRows()) {
+            int rowBeefHeadCount = row.getBeefHeadCount();
+            if (rowBeefHeadCount < minBeefHeadCount) {
+                minBeefHeadCount = rowBeefHeadCount;
+                chosenRow = row;
+            }
+        }
+        return chosenRow;
     }
 }

@@ -25,10 +25,7 @@ public class Row {
         // Otherwise, check if the card can be added to the row according to the game rules
         int lastCardValue = getLastCardValue();
         int cardNumber = card.getValue();
-
-        // If the card has the same or higher number than the last card in the row, it can be added
         return (lastCardValue <= cardNumber);
-
     }
 
 
@@ -42,7 +39,19 @@ public class Row {
         return cards;
     }
 
+    public int getBeefHeadCount() {
+        int rowBeefHeadCount = 0;
+        for (Card card : cards) {
+            rowBeefHeadCount += card.getBeefHead();
+        }
+        return rowBeefHeadCount;
+    }
+
     public int getLastCardValue() {
         return cards.get(cards.size() - 1).getValue();
+    }
+
+    public int getLastCardIndex() {
+        return cards.size() - 1;
     }
 }
