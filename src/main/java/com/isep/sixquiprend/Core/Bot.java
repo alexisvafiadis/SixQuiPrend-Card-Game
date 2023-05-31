@@ -42,6 +42,7 @@ public class Bot extends Player{
         int minBeefHeadCount = 100;
         Row chosenRow = null;
         for (Row row : game.getRows()) {
+            if (row == null) continue;
             int rowBeefHeadCount = row.getBeefHeadCount();
             if (rowBeefHeadCount < minBeefHeadCount) {
                 minBeefHeadCount = rowBeefHeadCount;

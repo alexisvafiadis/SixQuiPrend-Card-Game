@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameApplication extends javafx.application.Application {
+    private DialogueBox dialogueBox;
     private Game game;
     private String GAME_TITLE = "Six Qui Prend";
     private final String GAME_ROOT = "/com/isep/sixquiprend/";
@@ -47,6 +48,8 @@ public class GameApplication extends javafx.application.Application {
         GameController gameController = new GameController(this, game);
         game.setGameController(gameController);
         setScene("game.fxml", param -> gameController);
+        dialogueBox = DialogueBox.getInstance(getGame());
+        showElement("DialogueBox",param -> dialogueBox,701,426);
         game.start();
     }
 
@@ -80,13 +83,9 @@ public class GameApplication extends javafx.application.Application {
             AnchorPane anchorPane = fxmlLoader.load();
             if (root == null) {
                 root = ((AnchorPane) stage.getScene().getRoot());
-                anchorPane.setLayoutY((root.getHeight() - anchorPane.getHeight()) / layoutY);
-                anchorPane.setLayoutX((root.getWidth() - anchorPane.getWidth()) / layoutX);
             }
-            else {
-                anchorPane.setLayoutX(layoutX);
-                anchorPane.setLayoutY(layoutY);
-            }
+            anchorPane.setLayoutX(layoutX);
+            anchorPane.setLayoutY(layoutY);
             root.getChildren().add(anchorPane);
             stage.show();
         }
@@ -96,8 +95,8 @@ public class GameApplication extends javafx.application.Application {
         }
     }
 
-    public void showElement(String document, Callback<Class<?>, Object> callback, double centerCoeff) {
-        showElement(document, callback, centerCoeff, centerCoeff,null);
+    public void showElement(String document, Callback<Class<?>, Object> callback, double layoutX, double layoutY) {
+        showElement(document, callback, layoutX, layoutY,null);
     }
 
     public FXMLLoader loadFXML(String name) {
@@ -108,16 +107,6 @@ public class GameApplication extends javafx.application.Application {
         else {
             return new FXMLLoader(fxmlURL);
         }
-    }
-
-    public void closeSubWindows() {
-        String[] arrayWindowsToClose = new String[] {};
-        List<String> listWindowsToClose = Arrays.asList(arrayWindowsToClose);
-        ((AnchorPane) stage.getScene().getRoot()).getChildren().removeIf((node) -> node != null && listWindowsToClose.contains(node.getId()));
-    }
-
-    public void closeSubWindowById(String id) {
-        ((AnchorPane) stage.getScene().getRoot()).getChildren().removeIf((node) -> node != null && node.getId().equals(id));
     }
 
     public Image getImage(String imagePath) {
@@ -138,5 +127,9 @@ public class GameApplication extends javafx.application.Application {
 
     public void setPlayerUserName(String playerUserName) {
         this.playerUserName = playerUserName;
+    }
+
+    public DialogueBox getDialogueBox() {
+        return dialogueBox;
     }
 }

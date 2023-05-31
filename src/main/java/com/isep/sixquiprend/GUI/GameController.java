@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -35,6 +36,8 @@ public class GameController {
     private HBox mainPlayerCardsBox;
     @FXML
     private ImageView lastCardOfPileImageView;
+    @FXML
+    private Text roundText;
 
     private GameApplication application;
     private Game game;
@@ -74,6 +77,10 @@ public class GameController {
             cardImageView.setId(MAIN_PLAYER_CARD_ID_PREFIX + hand.get(i).getValue());
         }
     }
+
+    public void updateRoundNumber(int roundNumber) {
+        roundText.setText("Round " + String.valueOf(roundNumber));
+    }
     public void placeCardInRow(int cardValue, int rowId, int cardIndex) {
         ImageView cardImageView = getRowCardImageView(rowId, cardIndex);
         cardImageView.setImage(getCardImage(cardValue));
@@ -91,6 +98,10 @@ public class GameController {
         }
     }
 
+    public void hideRow(int controllerRowIndex) {
+        rowsBox.getChildren().get(controllerRowIndex).setVisible(false);
+    }
+
     @FXML
     public void onCardChooseEventHandler(MouseEvent e) {
         if (!(e.getEventType().equals(MouseEvent.MOUSE_CLICKED))) {
@@ -100,8 +111,13 @@ public class GameController {
             return;
         }
         ImageView cardImageView = ((ImageView) e.getSource());
+        if (cardImageView.getImage() == null) {
+            return;
+        }
+        if (!cardImageView.getParent().isVisible()) return;
         int cardValue = Integer.parseInt(cardImageView.getId().substring(MAIN_PLAYER_CARD_ID_PREFIX.length()));
         game.pickPlayerCard(cardValue);
+        cardImageView.setImage(null);
     }
 
     @FXML
@@ -118,7 +134,7 @@ public class GameController {
         }
         HBox rowBox = ((HBox) rowImageView.getParent());
         System.out.println("Clicked on row number " + rowsBox.getChildren().indexOf(rowBox));
-        game.executeMainPlayerRowPickup(game.getRow(rowsBox.getChildren().indexOf(rowBox)));
+        game.executeMainPlayerRowPickup(rowsBox.getChildren().indexOf(rowBox));
     }
     public VBox getPlayerBox(String userName) {
         System.out.println("Looking for player box with ID : " + userName + "Box");
@@ -165,30 +181,43 @@ public class GameController {
         });
         setCardImageToBackside(sourceImageView);
         translate.play();
-}
+    }
+
+    public void prepareForNewRound() {
+        resetRows();
+    }
+
+    public void resetRows() {
+        for (Node node : rowsBox.getChildren()) {
+            HBox rowBox = ((HBox) node);
+            rowBox.setVisible(true);
+            for (Node cardNode : rowBox.getChildren()) {
+                ImageView cardImageView = ((ImageView) cardNode);
+                cardImageView.setImage(null);
+            }
+        }
+    }
 
     public void setCardImageToBackside(ImageView imageView) {
         imageView.setImage(application.getImage("cards/backside.png"));
     }
-
-    public void setCardImageToNull(ImageView imageView) {
-        imageView.setImage(null);
-    }
     public double getRealImageX(ImageView imageView, double factor) {
         Bounds bounds = imageView.localToScene(imageView.getBoundsInLocal());
+        if (factor == 0) return bounds.getMinX();
         return bounds.getMinX() + bounds.getWidth() / factor;
     }
 
     public double getRealImageY(ImageView imageView, double factor) {
         Bounds bounds = imageView.localToScene(imageView.getBoundsInLocal());
+        if (factor == 0) return bounds.getMinY();
         return bounds.getMinY() + bounds.getHeight() / factor;
     }
 
     public double getRealImageX(ImageView imageView) {
-        return getRealImageX(imageView, 2);
+        return getRealImageX(imageView, 0);
     }
     public double getRealImageY(ImageView imageView) {
-        return getRealImageY(imageView, 2);
+        return getRealImageY(imageView, 0);
     }
 
     public Image getCardImage(int cardValue) {
