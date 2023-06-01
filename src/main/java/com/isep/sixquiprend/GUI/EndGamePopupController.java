@@ -16,18 +16,34 @@ public class EndGamePopupController {
     @FXML
     private Label announcementLabel;
     @FXML
+    private Label rankingLabel;
+    @FXML
     private ImageView endGameBackgroundImage;
     private GameApplication application;
-    private Game game;
+    private int finalPlayerRanking;
 
-    public EndGamePopupController(GameApplication application, Game game) {
+    public EndGamePopupController(GameApplication application, int finalPlayerRanking) {
         this.application = application;
-        this.game = game;
+        this.finalPlayerRanking = finalPlayerRanking;
     }
 
     @FXML
     public void initialize() {
-        endGameBackgroundImage.setImage(application.getImage(""));
+        String imagePath = "scene/";
+        String announcementText = "";
+        String rankingText = "Ranking " + finalPlayerRanking;
+        if (finalPlayerRanking == 1) {
+            imagePath += "WinPopup.png";
+            announcementText = "You won!";
+        }
+        else {
+            imagePath += "LosePopup.jpg";
+            announcementText = "You lost!";
+        }
+        endGameBackgroundImage.setImage(application.getImage(imagePath));
+        announcementLabel.setText(announcementText);
+        rankingLabel.setText(rankingText);
+
     }
 
     @FXML

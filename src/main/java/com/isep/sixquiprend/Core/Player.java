@@ -37,8 +37,6 @@ public class Player {
             if (hand.get(i).getValue() == value) {
                 return i;
             }
-            System.out.println(hand.get(i).getValue());
-            System.out.println(value);
         }
         return null;
     }
@@ -49,6 +47,10 @@ public class Player {
             beefHeadCount += card.getBeefHead();
         }
         game.getGameController().updatePlayerBeefHead(this);
+    }
+
+    public void throwAwayChosenCard() {
+        hand.remove(cardChoice);
     }
     public String getName() {
         return name;

@@ -35,9 +35,8 @@ public class GameController {
     @FXML
     private HBox mainPlayerCardsBox;
     @FXML
-    private ImageView lastCardOfPileImageView;
-    @FXML
     private Text roundText;
+    private ImageView emptyCardImageView;
 
     private GameApplication application;
     private Game game;
@@ -67,12 +66,18 @@ public class GameController {
     public void updatePlayerCard(Player player, Card card) {
         VBox playerBox = getPlayerBox(player.getName());
         ImageView boxImageView = getBoxImageView(playerBox);
+        if (card == null) {
+            setCardImageToBackside(boxImageView);
+            return;
+        }
         boxImageView.setImage(getCardImage(card.getValue()));
         boxImageView.setId(ROW_CARD_ID_PREFIX + card.getValue());
     }
+    public void resetPlayerCard(Player player) {updatePlayerCard(player,null);}
     public void updateMainPlayerHand(List<Card> hand) {
         for (int i = 0; i < hand.size(); i++) {
             ImageView cardImageView = ((ImageView) mainPlayerCardsBox.getChildren().get(i));
+            if (emptyCardImageView == null) emptyCardImageView = cloneImageView(cardImageView);
             cardImageView.setImage(application.getImage("cards/" + hand.get(i).getValue() + ".png"));
             cardImageView.setId(MAIN_PLAYER_CARD_ID_PREFIX + hand.get(i).getValue());
         }
@@ -89,6 +94,14 @@ public class GameController {
     public ImageView getRowCardImageView(int rowId, int cardIndex) {
         HBox rowBox = ((HBox) rowsBox.getChildren().get(rowId));
         return (((ImageView) rowBox.getChildren().get(cardIndex)));
+    }
+
+    public void resetRow(int rowId) {
+        HBox rowBox = ((HBox) rowsBox.getChildren().get(rowId));
+        for (int i = 0; i < rowBox.getChildren().size(); i++) {
+            ImageView cardImageView = ((ImageView) rowBox.getChildren().get(i));
+            cardImageView.setImage(null);
+        }
     }
 
     public void hideOpponentsCards() {
@@ -117,7 +130,7 @@ public class GameController {
         if (!cardImageView.getParent().isVisible()) return;
         int cardValue = Integer.parseInt(cardImageView.getId().substring(MAIN_PLAYER_CARD_ID_PREFIX.length()));
         game.pickPlayerCard(cardValue);
-        cardImageView.setImage(null);
+        mainPlayerCardsBox.getChildren().remove(cardImageView);
     }
 
     @FXML
@@ -142,7 +155,7 @@ public class GameController {
             if (node instanceof VBox && node.getId().equals(userName + "Box")) {
                 return ((VBox) node);
             }
-            System.out.println("Node of ID " + node.getId() + " of class " + node.getClass());
+            //System.out.println("Node of ID " + node.getId() + " of class " + node.getClass());
         }
         return null;
         //For some reason the following line didn't work:
@@ -162,10 +175,7 @@ public class GameController {
         ImageView destinationImageView = getRowCardImageView(rowId, cardIndex);
         Image sourceImage = getCardImage(Integer.parseInt(sourceImageView.getId().substring(ROW_CARD_ID_PREFIX.length())));
 
-        ImageView clonedImageView = new ImageView(sourceImageView.getImage());
-        clonedImageView.setFitHeight(sourceImageView.getFitHeight());
-        clonedImageView.setFitWidth(sourceImageView.getFitWidth());
-        clonedImageView.toFront();
+        ImageView clonedImageView = cloneImageView(sourceImageView);
         gameAnchorPane.getChildren().add(clonedImageView);
 
         TranslateTransition translate = new TranslateTransition(Duration.seconds(CARD_ANIMATION_DURATION), clonedImageView);
@@ -183,8 +193,17 @@ public class GameController {
         translate.play();
     }
 
+    public ImageView cloneImageView(ImageView imageView) {
+        ImageView clonedImageView = new ImageView(imageView.getImage());
+        clonedImageView.setFitHeight(imageView.getFitHeight());
+        clonedImageView.setFitWidth(imageView.getFitWidth());
+        clonedImageView.toFront();
+        return clonedImageView;
+    }
+
     public void prepareForNewRound() {
         resetRows();
+        resetHand();
     }
 
     public void resetRows() {
@@ -195,6 +214,12 @@ public class GameController {
                 ImageView cardImageView = ((ImageView) cardNode);
                 cardImageView.setImage(null);
             }
+        }
+    }
+
+    public void resetHand() {
+        for (int i = 0 ; i < game.getMaxHandSize() ; i++) {
+            mainPlayerCardsBox.getChildren().add(cloneImageView(emptyCardImageView));
         }
     }
 

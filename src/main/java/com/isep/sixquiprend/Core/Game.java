@@ -10,14 +10,16 @@ import java.util.List;
 
 public class Game {
     private boolean DEBUG_MODE = false;
-    private final int BOTS_DIFFICULTY = 0;
-    private final int MAX_BEEFHEAD_COUNT = 66;
+    private final int BOTS_DIFFICULTY = 1;
+    private final int MAX_BEEFHEAD_COUNT = 1;
     private final int PLAYER_CARDS_PER_ROUND = 10;
     private final int ROW_COUNT = 4;
+    private final int HAND_SIZE = 10;
     private final int MAX_PLAYER_COUNT = 10;
 
     private final int minCardValue = 1;
     private final int maxCardValue = 104;
+    private int chosenPlayerCount;
     private GameState gameState;
     private List<Player> players;
     private Player mainPlayer;
@@ -31,11 +33,13 @@ public class Game {
     public Game(GameApplication application) {
         this.application = application;
         players = new ArrayList<>();
-        players.add(new Player(this,application.getPlayerUserName()));
-        players.add(new Bot(this,"Bot 1",BOTS_DIFFICULTY));
-        players.add(new Bot(this,"Bot 2",BOTS_DIFFICULTY));
-        players.add(new Bot(this,"BotTouron",BOTS_DIFFICULTY));
+        mainPlayer = new Player(this,application.getPlayerUserName());
         roundNumber = 1;
+        chosenPlayerCount = 4;
+        players.add(mainPlayer);
+        for (int i = 1; i < chosenPlayerCount ; i++) {
+            players.add(new Bot(this,"Bot " + i,BOTS_DIFFICULTY));
+        }
     }
 
     public void start() {
@@ -52,7 +56,7 @@ public class Game {
 
     public void startNewTurn() {
         System.out.println("Starting new turn");
-        dialogueBox.displayInfo("Please pick a card for this turn.");
+        dialogueBox.displayInfo("A new turn has begun. Please pick the card that you want to play.");
         dialogueBox.setOnFinish((e) ->         gameState = GameState.WAITING_FOR_CARD_PICK);
     }
 
@@ -60,7 +64,7 @@ public class Game {
         gameState = GameState.PLAYING;
         System.out.println("Picking card " + cardValue);
         getMainPlayer().pickCardByIndex(getMainPlayer().getCardIndexByValue(cardValue));
-        for (int i = 1; i < players.size(); i++) {
+        for (int i = 0; i < players.size(); i++) {
             Player player = players.get(i);
             if (player instanceof Bot) {
                 player.pickCardByIndex(((Bot) player).decideCardIndex());
@@ -70,7 +74,7 @@ public class Game {
     }
 
     public void continueTurn() {
-        //orderPlayers();
+        orderPlayersByCardChoice();
         currentPlayerIndex = 0;
         executePlayerMove();
     }
@@ -79,23 +83,25 @@ public class Game {
         Player player = players.get(currentPlayerIndex);
         Integer rowIndex = findRow(player.getCardChoice());
         dialogueBox.displayInfo("It is " + player.getName() + "'s turn.");
-        //If the card cannot be placed in any row, the player picks up a row, else the card is placed in the right
-        //row and we execute this same function for the next player
-        if (rowIndex == null) {
+        if (rowIndex == null) { //if card cannot be placed in any row, the player must pick up a row
             System.out.println("No row found for card " + player.getCardChoice().getValue());
             if (player instanceof Bot) {
                 giveRowToPlayer(((Bot) player).chooseRow(),player);
-                decideActionAfterMove();
             }
             else {
-                dialogueBox.displayInfo("That card is too low to be placed in any row. Pick a row to pick up.");
+                dialogueBox.displayInfo("Your card could not be placed in any row. Pick a row to pick up.");
                 dialogueBox.setOnFinish((e) -> gameState = GameState.WAITING_FOR_ROW_PICK);
             }
         }
         else {
             System.out.println("Row found for card " + player.getCardChoice().getValue() + " : " + rowIndex);
-            addCardToRow(player.getCardChoice(),rowIndex,false);
             Row rowForCard = rows.get(rowIndex);
+            if (rowForCard.isFull()) {
+                dialogueBox.displayInfo(player.getName()  + " had to place their card in is full. They must pick up the row.");
+                giveRowToPlayer(rowForCard,player);
+                return;
+            }
+            addCardToRow(player.getCardChoice(),rowIndex,false);
             dialogueBox.setOnFinish((e) -> {
                 gameController.playCardMovementAnimation(player, rowIndex, rowForCard.getLastCardIndex(), (finish) -> {
                     decideActionAfterMove();
@@ -104,76 +110,37 @@ public class Game {
         }
     }
 
-    public void executeMainPlayerRowPickup(int rowIndex) {
-        giveRowToPlayer(getRow(rowIndex),getMainPlayer());
-        decideActionAfterMove();
-        gameState = GameState.PLAYING;
+    public void createNewRowFromCard(int rowIndex, Card card) {
+        rows.set(rowIndex,new Row());
+        gameController.resetRow(rowIndex);
+        addCardToRow(card,rowIndex,true);
     }
 
-/*    public int convertRowIndex(int rowIndex, boolean toController) {
-        if (toController) {
-            return rowIndex + (ROW_COUNT - rows.size());
-        }
-        else {
-            return rowIndex - (ROW_COUNT - rows.size());
-        }
-    }*/
+    public void executeMainPlayerRowPickup(int rowIndex) {
+        gameState = GameState.PLAYING;
+        giveRowToPlayer(getRow(rowIndex),getMainPlayer());
+    }
 
     public void decideActionAfterMove() {
         System.out.println("Deciding action after move");
         dialogueBox.setOnFinish((e) -> {
-            if (!isThereAnyRowLeft()) {
-                finishRound();
-            }
-            if (currentPlayerIndex < players.size() - 1) {
+            if (!isTurnEnded()) {
                 currentPlayerIndex++;
                 executePlayerMove();
-            } else {
-                finishTurn();
             }
         });
     }
 
     public void giveRowToPlayer(Row row, Player player) {
-        player.pickUpRow(row);
-        gameController.hideRow(rows.indexOf(row));
         int rowIndex = rows.indexOf(row);
-        rows.set(rowIndex,null);
         dialogueBox.displayInfo(player.getName() + " picked up row " + (rowIndex + 1));
-    }
-
-    public void askForNextTurnPlay() {
-
-    }
-
-    public void finishTurn() {
-        if (!isRoundEnded()) {
-            //TODO : display results
-            //TODO : wait for next turn
-            startNewTurn();
-        }
-        else {
-            finishRound();
-        }
-    }
-
-    public void finishRound() {
-        System.out.println("Finishing round");
-        dialogueBox.displayInfo("This round has ended!");
-        incrementRoundNumber();
-        gameController.prepareForNewRound();
-        if (!isGameEnded()) {
-            //TODO : display results
-            //TODO : wait for next round
-            startNewRound();
-        }
-        else {
-            end();
-        }
-    }
-
-    public void end() {
-        application.displayEndGamePopup();
+        dialogueBox.setOnFinish((e) -> {
+            gameController.resetPlayerCard(player);
+            player.pickUpRow(row);
+            rows.set(rowIndex,null);
+            createNewRowFromCard(rowIndex,player.getCardChoice());
+            decideActionAfterMove();
+        });
     }
 
     public Integer findRow(Card card) {
@@ -181,7 +148,6 @@ public class Game {
         int cardValue = card.getValue();
         int minDiff = 100;
         int minRowIndex = 0;
-
         for (int i = 0 ; i < rows.size(); i++) {
             Row row = rows.get(i);
             if (row == null) continue;
@@ -208,16 +174,15 @@ public class Game {
         for (int i = minCardValue; i <= maxCardValue; i++) {
             allCardValues.add(i);
         }
-
-        // Shuffle the list of possible card values
         Collections.shuffle(allCardValues);
 
         for (int i = 0 ; i < players.size(); i++) {
             // Pick the player cards for their deck
             List<Card> playerHand = new ArrayList<>();
-            for (int j = PLAYER_CARDS_PER_ROUND * i ; j < PLAYER_CARDS_PER_ROUND * i + PLAYER_CARDS_PER_ROUND; j++) {
-                int cardValue = allCardValues.get(j);
+            for (int j = 0 ; j < PLAYER_CARDS_PER_ROUND ; j++) {
+                int cardValue = allCardValues.remove(0);
                 playerHand.add(new Card(cardValue));
+                System.out.println("Player " + i + " card " + j + " : " + cardValue);
             }
             players.get(i).setAndOrderHand(playerHand);
         }
@@ -231,7 +196,7 @@ public class Game {
         List<Card> rowCards = new ArrayList<>();
         for (int j = 0; j < ROW_COUNT; j ++) {
             rows.add(new Row());
-            int cardValue = allCardValues.get(80 + j);
+            int cardValue = allCardValues.remove(0);
             rowCards.add(new Card(cardValue));
         }
         rowCards = orderCards(rowCards);
@@ -264,7 +229,7 @@ public class Game {
             }
             return cards;
     }
-    public void orderPlayers() {
+    public void orderPlayersByCardChoice() {
         for (int i = 0; i < players.size() - 1; i++) {
             for (int j = i + 1; j < players.size(); j++) {
                 Player player1 = players.get(i);
@@ -278,6 +243,65 @@ public class Game {
                 }
             }
         }
+        dialogueBox.displayInfo("Based on the cards of other players, you are going to play in position " + (players.indexOf(getMainPlayer()) + 1));
+    }
+
+    public int getPlayerFinalRanking() {
+        for (int i = 0; i < players.size() - 1; i++) {
+            for (int j = i + 1; j < players.size(); j++) {
+                Player player1 = players.get(i);
+                Player player2 = players.get(j);
+                if (player1.getBeefHeadCount() < player2.getCardChoice().getValue()) {
+                    players.set(i, player2);
+                    players.set(j, player1);
+                }
+            }
+        }
+        return players.indexOf(getMainPlayer()) + 1;
+    }
+
+    public void finishTurn() {
+        System.out.println("Finishing turn.");
+        dialogueBox.displayInfo("This turn has ended!");
+        startNewTurn();
+    }
+
+    public void finishRound() {
+        System.out.println("Finishing round.");
+        dialogueBox.displayInfo("This round has ended!");
+        incrementRoundNumber();
+        gameController.prepareForNewRound();
+        startNewRound();
+    }
+
+    public void end() {
+        dialogueBox.displayInfo("The game has ended!");
+        dialogueBox.setOnFinish((e) -> {
+            application.displayEndGamePopup(getPlayerFinalRanking());
+        });
+    }
+
+    public boolean isTurnEnded() {
+        if (isRoundEnded()) {
+            return true;
+        }
+        if (!(currentPlayerIndex < players.size() - 1)) {
+            finishTurn();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isRoundEnded() {
+        if (isGameEnded()) {
+            end();
+            return true;
+        }
+        if ((getMainPlayer().getHand().size() == 0) || (!isThereAnyRowLeft())) {
+            finishRound();
+            return true;
+        }
+        return false;
     }
 
     public boolean isGameEnded() {
@@ -285,15 +309,9 @@ public class Game {
             if (player.getBeefHeadCount() >= MAX_BEEFHEAD_COUNT) {
                 return true;
             }
+            System.out.println(player.getName() + " has " + player.getBeefHeadCount() + " beefheads");
         }
         return false;
-    }
-
-    public boolean isRoundEnded() {
-        if (getMainPlayer().getHand().size() == 0) {
-            return true;
-        }
-        return !isThereAnyRowLeft();
     }
 
     public boolean isThereAnyRowLeft() {
@@ -310,7 +328,7 @@ public class Game {
         gameController.updateRoundNumber(roundNumber);
     }
     public Player getMainPlayer() {
-        return players.get(0);
+        return mainPlayer;
     }
 
     public Player getPlayer(int index) {
@@ -319,10 +337,6 @@ public class Game {
 
     public List<Player> getPlayers() {
         return players;
-    }
-
-    public GameApplication getApplication() {
-        return application;
     }
 
     public GameController getGameController() {
@@ -347,5 +361,13 @@ public class Game {
 
     public boolean isInDebugMode() {
         return DEBUG_MODE;
+    }
+
+    public int getMaxHandSize() {
+        return HAND_SIZE;
+    }
+
+    public int getMaxCardValue() {
+        return maxCardValue;
     }
 }

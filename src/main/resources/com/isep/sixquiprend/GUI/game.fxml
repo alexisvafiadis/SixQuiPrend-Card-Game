@@ -233,7 +233,7 @@
             </VBox>
          </children>
       </HBox>
-      <HBox fx:id="mainPlayerCardsBox" layoutX="174.0" layoutY="655.0" prefHeight="98.0" prefWidth="727.0" spacing="10">
+      <HBox fx:id="mainPlayerCardsBox" layoutX="174.0" layoutY="655.0" prefHeight="98.0" prefWidth="727.0" spacing="10" fillHeight="false" >
          <children>
             <ImageView fitHeight="97.5" fitWidth="72.0" onMouseClicked="#onCardChooseEventHandler" pickOnBounds="true" preserveRatio="true">
                <image>

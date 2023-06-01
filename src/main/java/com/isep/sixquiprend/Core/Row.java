@@ -12,10 +12,6 @@ public class Row {
     }
 
     public boolean canAddCard(Card card) {
-        // If the row is already full, the card cannot be added
-        if (isFull()) {
-            return false;
-        }
 
         // If the row is empty, the card can always be added
         if (cards.size() == 0) {

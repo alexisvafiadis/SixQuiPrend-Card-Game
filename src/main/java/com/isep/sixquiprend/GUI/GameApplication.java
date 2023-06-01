@@ -14,10 +14,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GameApplication extends javafx.application.Application {
-    private DialogueBox dialogueBox;
-    private Game game;
     private String GAME_TITLE = "Six Qui Prend";
     private final String GAME_ROOT = "/com/isep/sixquiprend/";
+    private final String END_GAME_POPUP_FILE_NAME = "EndGamePopup";
+    private DialogueBox dialogueBox;
+    private Game game;
     private Stage stage;
     private String playerUserName;
     @Override
@@ -36,29 +37,29 @@ public class GameApplication extends javafx.application.Application {
     }
 
     public void startMenu() {
-        setScene("Start.fxml", param -> new StartController(this));
+        setScene("Start", param -> new StartController(this));
     }
 
     public void startProfileCreation() {
-        setScene("ProfileCreation.fxml", param -> new ProfileCreationController(this));
+        setScene("ProfileCreation", param -> new ProfileCreationController(this));
     }
 
     public void startGame() {
         this.game = new Game(this);
         GameController gameController = new GameController(this, game);
         game.setGameController(gameController);
-        setScene("game.fxml", param -> gameController);
+        setScene("game", param -> gameController);
         dialogueBox = DialogueBox.getInstance(getGame());
         showElement("DialogueBox",param -> dialogueBox,701,426);
         game.start();
     }
 
-    public void displayEndGamePopup() {
-        setScene("EndGamePopup.fxml", param -> new EndGamePopupController(this,game));
+    public void displayEndGamePopup(int finalPlayerRanking) {
+        showElement(END_GAME_POPUP_FILE_NAME, param -> new EndGamePopupController(this,finalPlayerRanking),2.7);
     }
 
     public void setScene(String name, Callback<Class<?>, Object> callback) {
-        URL fxmlURL = getClass().getResource(name);
+        URL fxmlURL = getClass().getResource(name + ".fxml");
         if (fxmlURL == null) {
             throw new RuntimeException("FXML file not found: " + name);
         }
@@ -84,8 +85,14 @@ public class GameApplication extends javafx.application.Application {
             if (root == null) {
                 root = ((AnchorPane) stage.getScene().getRoot());
             }
-            anchorPane.setLayoutX(layoutX);
-            anchorPane.setLayoutY(layoutY);
+            if (layoutX == layoutY) { // if layoutx and layouty, the goal is to center
+                anchorPane.setLayoutY((root.getHeight() - anchorPane.getHeight()) / layoutY);
+                anchorPane.setLayoutX((root.getWidth() - anchorPane.getWidth()) / layoutX);
+            }
+            else {
+                anchorPane.setLayoutX(layoutX);
+                anchorPane.setLayoutY(layoutY);
+            }
             root.getChildren().add(anchorPane);
             stage.show();
         }
@@ -99,6 +106,10 @@ public class GameApplication extends javafx.application.Application {
         showElement(document, callback, layoutX, layoutY,null);
     }
 
+    public void showElement(String document, Callback<Class<?>, Object> callback, double centerCoeff) {
+        showElement(document, callback, centerCoeff, centerCoeff);
+    }
+
     public FXMLLoader loadFXML(String name) {
         URL fxmlURL = getClass().getResource(GAME_ROOT + "GUI/" + name + ".fxml");
         if (fxmlURL == null) {
@@ -107,6 +118,10 @@ public class GameApplication extends javafx.application.Application {
         else {
             return new FXMLLoader(fxmlURL);
         }
+    }
+
+    public void closeSubWindowById(String id) {
+        ((AnchorPane) stage.getScene().getRoot()).getChildren().removeIf((node) -> node != null && node.getId().equals(id));
     }
 
     public Image getImage(String imagePath) {

@@ -19,6 +19,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 public class DialogueBox {
+        private final boolean TIMELINE_DEBUG = false;
+        private int defaultWritingDelay = 36;
+        private final int FAST_WRITING_DELAY = 15;
+        private final int VERY_FAST_WRITING_DELAY = 2;
+        private final int PAUSE_BETWEEN_MESSAGES = 10; // in loop iterations (depends on writing delay)
         private static DialogueBox instance;
         private Game game;
         private Timeline timeline;
@@ -28,9 +33,6 @@ public class DialogueBox {
         private List<Color> colors;
         private List<String> messages;
         private String currentMessage;
-        private int defaultWritingDelay = 36;
-        private final int FAST_WRITING_DELAY = 15;
-        private final int VERY_FAST_WRITING_DELAY = 2;
         @FXML
         private Label textLabel;
         @FXML
@@ -43,18 +45,6 @@ public class DialogueBox {
             if (game.isInDebugMode()) {
                 defaultWritingDelay = VERY_FAST_WRITING_DELAY;
             }
-        }
-
-        public void adaptTextSize(double resizeCoeff) {
-            double leftAnchor = 0.15 / resizeCoeff;
-            double topAnchor = 0.3 / resizeCoeff;
-            AnchorPane.setLeftAnchor(textLabel, dialogPane.getPrefWidth() * leftAnchor);
-            AnchorPane.setTopAnchor(textLabel, dialogPane.getPrefHeight() * topAnchor);
-            AnchorPane.setBottomAnchor(textLabel, dialogPane.getPrefHeight() * topAnchor);
-            AnchorPane.setRightAnchor(textLabel, dialogPane.getPrefWidth() * leftAnchor);
-            textLabel.setMaxWidth(500);
-            textLabel.setMaxHeight(500);
-            textLabel.setWrapText(true);
         }
 
         public void slowPrint(String output, Color color, boolean nextLine) {
@@ -78,9 +68,9 @@ public class DialogueBox {
                     String substring = currentMessage.substring(0, charIndex + 1);
                     setText(substring);
                     charIndex++;
-                } else if (charIndex >= currentMessage.length() + 10 ) {
+                } else if (charIndex >= currentMessage.length() + PAUSE_BETWEEN_MESSAGES ) {
                     if (messageIndex >= messages.size() - 1) {
-                        System.out.println("Time line has been stopped at cycle count " + timeline.getCycleCount());
+                        if (TIMELINE_DEBUG) System.out.println("Time line has been stopped at cycle count " + timeline.getCycleCount());
                         messages.clear();
                         colors.clear();
                     }
@@ -98,13 +88,15 @@ public class DialogueBox {
             timeline.setOnFinished(onFinishEventHandler);
             int cycleCount = 0;
             for (String message : messages) {
-                cycleCount += message.length() + 10;
+                cycleCount += message.length() + PAUSE_BETWEEN_MESSAGES;
             }
             cycleCount += messages.size();
             timeline.setCycleCount(cycleCount);
-            System.out.println("The timeline has been started and the event has been added");
-            System.out.println("Content of getOnFinished : " + timeline.getStatus().toString());
-            System.out.println("Cycle count set : " + cycleCount);
+            if (TIMELINE_DEBUG) {
+                System.out.println("The timeline has been started and the event has been added");
+                System.out.println("Content of getOnFinished : " + timeline.getStatus().toString());
+                System.out.println("Cycle count set : " + cycleCount);
+            }
             timeline.play();
         }
 
@@ -113,8 +105,6 @@ public class DialogueBox {
         public void announceReward(String announcement) {
             slowPrint(announcement, Color.YELLOW);
         }
-
-        public void announceDiscovery(String finding) { slowPrint(finding, Color.DARKCYAN); }
 
         public void announceFail(String fail) { slowPrint(fail, Color.RED); }
 
