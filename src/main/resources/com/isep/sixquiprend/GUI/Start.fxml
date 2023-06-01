@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="menuAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.sixquiprend.GUI.StartController">
    <children>
-      <ImageView fx:id="backgroundImage" fitHeight="${menuAnchorPane.height}" fitWidth="${menuAnchorPane.width}" pickOnBounds="true" preserveRatio="false">
+      <ImageView fx:id="backgroundImage" fitHeight="760.0" fitWidth="920.0" pickOnBounds="true" preserveRatio="false">
          <image>
             <Image url="@../images/scene/MenuBackground.jpg" />
          </image>

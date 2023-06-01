@@ -9,21 +9,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="profileCreationAnchorPane" maxHeight="760" maxWidth="920" prefHeight="760.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.sixquiprend.GUI.ProfileCreationController">
+<AnchorPane prefHeight="760.0" prefWidth="920.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.sixquiprend.GUI.ProfileCreationController">
    <children>
-      <ImageView fitHeight="268.0" fitWidth="277.0" layoutX="326.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="129.0" fitWidth="131.0" layoutX="396.0" layoutY="461.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/elements/profil.png" />
          </image>
       </ImageView>
-      <TextField fx:id="nameTextField" layoutX="274.0" layoutY="498.0">
+      <TextField fx:id="nameTextField" layoutX="336.0" layoutY="609.0">
          <font>
-            <Font size="30.0" />
+            <Font size="20.0" />
          </font>
       </TextField>
-      <Button fx:id="startTheGame" layoutX="398.0" layoutY="622.0" mnemonicParsing="false" onAction="#startGame" text="Start">
+      <Button fx:id="startTheGame" layoutX="415.0" layoutY="674.0" mnemonicParsing="false" onAction="#startGame" text="Start">
          <font>
-            <Font size="36.0" />
+            <Font size="26.0" />
          </font>
       </Button>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -52,10 +52,45 @@
             <Point3D y="1.0" />
          </rotationAxis>
       </ImageView>
-      <Text layoutX="277.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your username">
+      <Text fill="WHITE" layoutX="329.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your username" underline="true">
          <font>
-            <Font size="36.0" />
+            <Font name="Tahoma" size="26.0" />
          </font>
       </Text>
+      <Text fill="WHITE" layoutX="371.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of bots" underline="true">
+         <font>
+            <Font name="Tahoma" size="26.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="411.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bot level" underline="true">
+         <font>
+            <Font name="Tahoma" size="26.0" />
+         </font>
+      </Text>
+      <Button fx:id="numberOfBots2" layoutX="336.0" layoutY="142.0" mnemonicParsing="false" text="2">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="numberOfBots4" layoutX="547.0" layoutY="142.0" mnemonicParsing="false" text="4">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="numberOfBots3" layoutX="440.0" layoutY="142.0" mnemonicParsing="false" text="3">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="botLevelNoob" layoutX="332.0" layoutY="319.0" mnemonicParsing="false" text="Noob">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="botLevelPro" layoutX="509.0" layoutY="319.0" mnemonicParsing="false" text="Pro">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

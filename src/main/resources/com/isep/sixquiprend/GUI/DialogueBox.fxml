@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="dialogPane" minHeight="200.0" minWidth="200.0" prefHeight="200" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.sixquiprend.GUI.DialogueBox">
+<AnchorPane fx:id="dialogPane" minHeight="200.0" minWidth="200.0" prefHeight="200" prefWidth="200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.sixquiprend.GUI.DialogueBox">
     <children>
         <ImageView fx:id="backgroundImage" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="false">
             <image>
