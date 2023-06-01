@@ -234,6 +234,17 @@ public class GameController {
         }
     }
 
+    public void hideOpponentsCards() {
+        for (int i = 0; i < game.getPlayers().size(); i++) {
+            VBox playerBox = (VBox) playersBox.getChildren().get(i);
+            setCardImageToBackside(getBoxImageView(playerBox));
+        }
+    }
+
+    public void hideRow(int controllerRowIndex) {
+        rowsBox.getChildren().get(controllerRowIndex).setVisible(false);
+    }
+
 
     public ImageView cloneImageView(ImageView imageView) {
         ImageView clonedImageView = new ImageView(imageView.getImage());
