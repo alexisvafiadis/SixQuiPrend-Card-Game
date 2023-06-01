@@ -20,7 +20,6 @@ public class GameApplication extends javafx.application.Application {
     private DialogueBox dialogueBox;
     private Game game;
     private Stage stage;
-    private String playerUserName;
     @Override
     public void start(Stage stage) {
 
@@ -44,14 +43,18 @@ public class GameApplication extends javafx.application.Application {
         setScene("ProfileCreation", param -> new ProfileCreationController(this));
     }
 
-    public void startGame() {
-        this.game = new Game(this);
+    public void startGame(String mainPlayerUsername, int chosenBotCount, int difficulty) {
+        this.game = new Game(this, mainPlayerUsername, chosenBotCount, difficulty);
         GameController gameController = new GameController(this, game);
         game.setGameController(gameController);
         setScene("game", param -> gameController);
         dialogueBox = DialogueBox.getInstance(getGame());
         showElement("DialogueBox",param -> dialogueBox,701,426);
         game.start();
+    }
+
+    public void startGame() {
+        startGame(game.getMainPlayer().getName(),game.getChosenBotCount(),game.getDifficulty());
     }
 
     public void displayEndGamePopup(int finalPlayerRanking) {
@@ -134,14 +137,6 @@ public class GameApplication extends javafx.application.Application {
 
     public Stage getStage() {
         return stage;
-    }
-
-    public String getPlayerUserName() {
-        return playerUserName;
-    }
-
-    public void setPlayerUserName(String playerUserName) {
-        this.playerUserName = playerUserName;
     }
 
     public DialogueBox getDialogueBox() {

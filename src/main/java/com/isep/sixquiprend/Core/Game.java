@@ -3,6 +3,8 @@ package com.isep.sixquiprend.Core;
 import com.isep.sixquiprend.GUI.DialogueBox;
 import com.isep.sixquiprend.GUI.GameApplication;
 import com.isep.sixquiprend.GUI.GameController;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,12 +12,11 @@ import java.util.List;
 
 public class Game {
     private boolean DEBUG_MODE = false;
-    private final int BOTS_DIFFICULTY = 1;
-    private final int MAX_BEEFHEAD_COUNT = 1;
+    private final int MAX_BEEFHEAD_COUNT = 25;
     private final int PLAYER_CARDS_PER_ROUND = 10;
     private final int ROW_COUNT = 4;
     private final int HAND_SIZE = 10;
-    private final int MAX_PLAYER_COUNT = 10;
+    private final int MAX_PLAYER_COUNT = 4;
 
     private final int minCardValue = 1;
     private final int maxCardValue = 104;
@@ -29,17 +30,20 @@ public class Game {
     private GameController gameController;
     private DialogueBox dialogueBox;
     private int roundNumber;
+    private int difficulty;
 
-    public Game(GameApplication application) {
+    public Game(GameApplication application, String mainPlayerUsername, int chosenBotCount, int difficulty) {
         this.application = application;
+        this.difficulty = difficulty;
         players = new ArrayList<>();
-        mainPlayer = new Player(this,application.getPlayerUserName());
+        mainPlayer = new Player(this,mainPlayerUsername);
         roundNumber = 1;
-        chosenPlayerCount = 4;
+        chosenPlayerCount = 1 + chosenBotCount;
         players.add(mainPlayer);
-        for (int i = 1; i < chosenPlayerCount ; i++) {
-            players.add(new Bot(this,"Bot " + i,BOTS_DIFFICULTY));
+        for (int i = 1; i < chosenPlayerCount; i++) {
+            players.add(new Bot(this,"Bot " + i,difficulty));
         }
+        System.out.println("Game created with " + chosenPlayerCount + " players" + " and difficulty " + difficulty);
     }
 
     public void start() {
@@ -49,9 +53,8 @@ public class Game {
     }
 
     public void startNewRound() {
-        distributeCards();
-        gameState = GameState.PLAYING;
-        startNewTurn();
+        dialogueBox.displayInfo("Everyone has received their hand. Let's distribute the cards for each row.");
+        dialogueBox.setOnFinish((e) -> distributeCards());
     }
 
     public void startNewTurn() {
@@ -85,11 +88,12 @@ public class Game {
         dialogueBox.displayInfo("It is " + player.getName() + "'s turn.");
         if (rowIndex == null) { //if card cannot be placed in any row, the player must pick up a row
             System.out.println("No row found for card " + player.getCardChoice().getValue());
+            dialogueBox.displayInfo(player.getName() + " could not place their card " + player.getCardChoice().getValue() + " in any row.");
             if (player instanceof Bot) {
                 giveRowToPlayer(((Bot) player).chooseRow(),player);
             }
             else {
-                dialogueBox.displayInfo("Your card could not be placed in any row. Pick a row to pick up.");
+                dialogueBox.displayInfo("Pick a row to pick up.");
                 dialogueBox.setOnFinish((e) -> gameState = GameState.WAITING_FOR_ROW_PICK);
             }
         }
@@ -146,7 +150,7 @@ public class Game {
     public Integer findRow(Card card) {
         boolean hasFoundRow = false;
         int cardValue = card.getValue();
-        int minDiff = 100;
+        int minDiff = 200;
         int minRowIndex = 0;
         for (int i = 0 ; i < rows.size(); i++) {
             Row row = rows.get(i);
@@ -186,12 +190,15 @@ public class Game {
             }
             players.get(i).setAndOrderHand(playerHand);
         }
-        setRows(allCardValues);
-        gameController.updateMainPlayerHand(getMainPlayer().getHand());
-        dialogueBox.displayInfo("The cards for this round have been distributed.");
+        setRows(allCardValues,() -> {
+            gameController.updateMainPlayerHand(getMainPlayer().getHand());
+            dialogueBox.displayInfo("The cards for this round have been distributed.");
+            gameState = GameState.PLAYING;
+            startNewTurn();
+        });
     }
 
-    public void setRows(List<Integer> allCardValues) {
+    public void setRows(List<Integer> allCardValues, Runnable runnable) {
         rows = new ArrayList<>();
         List<Card> rowCards = new ArrayList<>();
         for (int j = 0; j < ROW_COUNT; j ++) {
@@ -200,9 +207,18 @@ public class Game {
             rowCards.add(new Card(cardValue));
         }
         rowCards = orderCards(rowCards);
-        for (int i = 0 ; i < rows.size() ; i++) {
-            addCardToRow(rowCards.get(i),i,true);
+        distributeRow(rowCards,0,runnable);
+    }
+
+    public void distributeRow(List<Card> rowCards, int rowIndex, Runnable onFinished) {
+        if (rowIndex == ROW_COUNT) {
+            onFinished.run();
+            return;
         }
+        addCardToRow(rowCards.get(rowIndex),rowIndex,false);
+        gameController.playDistributeRowCardAnimation(rowIndex,rowCards.get(rowIndex).getValue(),() -> {
+            distributeRow(rowCards,rowIndex + 1,onFinished);
+        });
     }
 
     public void addCardToRow(Card card, int rowIndex, boolean instantPlacement) {
@@ -251,7 +267,7 @@ public class Game {
             for (int j = i + 1; j < players.size(); j++) {
                 Player player1 = players.get(i);
                 Player player2 = players.get(j);
-                if (player1.getBeefHeadCount() < player2.getCardChoice().getValue()) {
+                if (player1.getBeefHeadCount() > player2.getBeefHeadCount()) {
                     players.set(i, player2);
                     players.set(j, player1);
                 }
@@ -370,4 +386,18 @@ public class Game {
     public int getMaxCardValue() {
         return maxCardValue;
     }
+
+    public int getChosenBotCount() {
+        return chosenPlayerCount - 1;
+    }
+
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public int getMaxPlayerCount() {
+        return MAX_PLAYER_COUNT;
+    }
+
+
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="gameAnchorPane" maxHeight="760.0" maxWidth="920.0" minHeight="760.0" minWidth="920.0" prefHeight="760.0" prefWidth="920.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.sixquiprend.GUI.GameController">
+<AnchorPane fx:id="gameAnchorPane" maxHeight="760.0" maxWidth="920.0" minHeight="760.0" minWidth="920.0" prefHeight="760.0" prefWidth="920.0" style="-fx-background-color: #e55d5d;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.sixquiprend.GUI.GameController">
    <children>
       <VBox fx:id="rowsBox" layoutX="67.0" layoutY="214.0" prefHeight="406.0" prefWidth="455.0" spacing="5">
          <children>
@@ -80,7 +80,7 @@
                   <Image url="@../images/cards/backside.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="97.5" fitWidth="72.0" layoutX="72.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="lastCardOfPileImageView" fitHeight="97.5" fitWidth="72.0" layoutX="72.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/cards/backside.png" />
                </image>

@@ -37,7 +37,7 @@ public class EndGamePopupController {
             announcementText = "You won!";
         }
         else {
-            imagePath += "LosePopup.jpg";
+            imagePath += "WinPopup.png"; //TODO: find a better image
             announcementText = "You lost!";
         }
         endGameBackgroundImage.setImage(application.getImage(imagePath));

@@ -10,7 +10,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -21,9 +20,13 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class GameController {
-    private final double CARD_ANIMATION_DURATION = 2;
+    private double classicCardAnimationDuration = 2;
+    private  double shortCardAnimationDuration = 1;
     private final String MAIN_PLAYER_CARD_ID_PREFIX = "card";
     private final String ROW_CARD_ID_PREFIX = "rowCard";
     @FXML
@@ -36,6 +39,8 @@ public class GameController {
     private HBox mainPlayerCardsBox;
     @FXML
     private Text roundText;
+    @FXML
+    private ImageView lastCardOfPileImageView;
     private ImageView emptyCardImageView;
 
     private GameApplication application;
@@ -44,10 +49,15 @@ public class GameController {
     public GameController(GameApplication application, Game game) {
         this.application = application;
         this.game = game;
+        if (game.isInDebugMode()) {
+            classicCardAnimationDuration = 0.1;
+            shortCardAnimationDuration = 0.1;
+        }
     }
     @FXML
     public void initialize() {
-        for (int i = 0; i < game.getPlayers().size(); i++) {
+        int playerCount = game.getPlayers().size();
+        for (int i = 0; i < playerCount; i++) {
             VBox playerBox = (VBox) playersBox.getChildren().get(i);
             Player player = game.getPlayers().get(i);
             playerBox.setId(player.getName() + "Box");
@@ -55,6 +65,12 @@ public class GameController {
             getBeefheadText(playerBox).setText(String.valueOf(player.getBeefHeadCount()));
             setCardImageToBackside(getBoxImageView(playerBox));
             System.out.println("Set player box id to " + playerBox.getId());
+        }
+        if (playerCount < game.getMaxPlayerCount()) {
+            for (int i = playerCount; i < game.getMaxPlayerCount(); i++) {
+                VBox playerBox = getPlayerBoxFromId(i);
+                playerBox.setVisible(false);
+            }
         }
     }
 
@@ -91,28 +107,12 @@ public class GameController {
         cardImageView.setImage(getCardImage(cardValue));
     }
 
-    public ImageView getRowCardImageView(int rowId, int cardIndex) {
-        HBox rowBox = ((HBox) rowsBox.getChildren().get(rowId));
-        return (((ImageView) rowBox.getChildren().get(cardIndex)));
-    }
-
     public void resetRow(int rowId) {
         HBox rowBox = ((HBox) rowsBox.getChildren().get(rowId));
         for (int i = 0; i < rowBox.getChildren().size(); i++) {
             ImageView cardImageView = ((ImageView) rowBox.getChildren().get(i));
             cardImageView.setImage(null);
         }
-    }
-
-    public void hideOpponentsCards() {
-        for (int i = 0; i < game.getPlayers().size(); i++) {
-            VBox playerBox = (VBox) playersBox.getChildren().get(i);
-            setCardImageToBackside(getBoxImageView(playerBox));
-        }
-    }
-
-    public void hideRow(int controllerRowIndex) {
-        rowsBox.getChildren().get(controllerRowIndex).setVisible(false);
     }
 
     @FXML
@@ -149,22 +149,6 @@ public class GameController {
         System.out.println("Clicked on row number " + rowsBox.getChildren().indexOf(rowBox));
         game.executeMainPlayerRowPickup(rowsBox.getChildren().indexOf(rowBox));
     }
-    public VBox getPlayerBox(String userName) {
-        System.out.println("Looking for player box with ID : " + userName + "Box");
-        for (Node node : playersBox.getChildren()) {
-            if (node instanceof VBox && node.getId().equals(userName + "Box")) {
-                return ((VBox) node);
-            }
-            //System.out.println("Node of ID " + node.getId() + " of class " + node.getClass());
-        }
-        return null;
-        //For some reason the following line didn't work:
-        //return ((VBox) playersBox.lookup("#" + userName + "Box"));
-    }
-
-    public ImageView getBoxImageView(VBox vbox) {
-        return ((ImageView) vbox.getChildren().get(2));
-    }
 
     public Text getBeefheadText(VBox vbox) {
         return ((Text) ((HBox) vbox.getChildren().get(1)).getChildren().get(0));
@@ -176,9 +160,10 @@ public class GameController {
         Image sourceImage = getCardImage(Integer.parseInt(sourceImageView.getId().substring(ROW_CARD_ID_PREFIX.length())));
 
         ImageView clonedImageView = cloneImageView(sourceImageView);
+        clonedImageView.setOpacity(0);
         gameAnchorPane.getChildren().add(clonedImageView);
 
-        TranslateTransition translate = new TranslateTransition(Duration.seconds(CARD_ANIMATION_DURATION), clonedImageView);
+        TranslateTransition translate = new TranslateTransition(Duration.seconds(classicCardAnimationDuration), clonedImageView);
 
         translate.setFromX(getRealImageX(sourceImageView));
         translate.setFromY(getRealImageY(sourceImageView));
@@ -189,16 +174,42 @@ public class GameController {
             destinationImageView.setImage(sourceImage);
             onFinished.handle(e);
         });
-        setCardImageToBackside(sourceImageView);
         translate.play();
+        executeRunnableWithSmallDelay(clonedImageView,sourceImageView);
     }
 
-    public ImageView cloneImageView(ImageView imageView) {
-        ImageView clonedImageView = new ImageView(imageView.getImage());
-        clonedImageView.setFitHeight(imageView.getFitHeight());
-        clonedImageView.setFitWidth(imageView.getFitWidth());
-        clonedImageView.toFront();
-        return clonedImageView;
+    public void playDistributeRowCardAnimation(int rowIndex, int cardValue, Runnable runnable) {
+        ImageView destinationImageView = getRowCardImageView(rowIndex, 0);
+        Image sourceImage = getCardImage(cardValue);
+
+        ImageView clonedImageView = cloneImageView(lastCardOfPileImageView);
+        clonedImageView.setImage(sourceImage);
+        clonedImageView.setOpacity(0);
+
+        gameAnchorPane.getChildren().add(clonedImageView);
+        TranslateTransition translate = new TranslateTransition(Duration.seconds(shortCardAnimationDuration), clonedImageView);
+
+        translate.setFromX(getRealImageX(lastCardOfPileImageView));
+        translate.setFromY(getRealImageY(lastCardOfPileImageView));
+        translate.setToX(getRealImageX(destinationImageView));
+        translate.setToY(getRealImageY(destinationImageView));
+        translate.setOnFinished((e) -> {
+            gameAnchorPane.getChildren().remove(clonedImageView);
+            destinationImageView.setImage(sourceImage);
+            runnable.run();
+        });
+        setCardImageToBackside(lastCardOfPileImageView);
+        translate.play();
+        executeRunnableWithSmallDelay(clonedImageView,null);
+    }
+
+    public void executeRunnableWithSmallDelay(ImageView imageView, ImageView imageViewToFlip) {
+        Runnable makeImageViewVisible = () -> {
+            imageView.setOpacity(1);
+            if (imageViewToFlip != null) setCardImageToBackside(imageViewToFlip);
+        };
+        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
+        scheduledExecutorService.schedule(makeImageViewVisible, 50, TimeUnit.MILLISECONDS);
     }
 
     public void prepareForNewRound() {
@@ -221,6 +232,44 @@ public class GameController {
         for (int i = 0 ; i < game.getMaxHandSize() ; i++) {
             mainPlayerCardsBox.getChildren().add(cloneImageView(emptyCardImageView));
         }
+    }
+
+
+    public ImageView cloneImageView(ImageView imageView) {
+        ImageView clonedImageView = new ImageView(imageView.getImage());
+        clonedImageView.setFitHeight(imageView.getFitHeight());
+        clonedImageView.setFitWidth(imageView.getFitWidth());
+        clonedImageView.toFront();
+        clonedImageView.setPreserveRatio(true);
+        clonedImageView.setOnMouseClicked(imageView.getOnMouseClicked());
+        clonedImageView.setPickOnBounds(imageView.isPickOnBounds());
+        return clonedImageView;
+    }
+
+    public VBox getPlayerBox(String userName) {
+        System.out.println("Looking for player box with ID : " + userName + "Box");
+        for (Node node : playersBox.getChildren()) {
+            if (node instanceof VBox && node.getId().equals(userName + "Box")) {
+                return ((VBox) node);
+            }
+            //System.out.println("Node of ID " + node.getId() + " of class " + node.getClass());
+        }
+        return null;
+        //For some reason the following line didn't work:
+        //return ((VBox) playersBox.lookup("#" + userName + "Box"));
+    }
+
+    public VBox getPlayerBoxFromId(int playerIndex) {
+        return ((VBox) playersBox.getChildren().get(playerIndex));
+    }
+
+    public ImageView getBoxImageView(VBox vbox) {
+        return ((ImageView) vbox.getChildren().get(2));
+    }
+
+    public ImageView getRowCardImageView(int rowId, int cardIndex) {
+        HBox rowBox = ((HBox) rowsBox.getChildren().get(rowId));
+        return (((ImageView) rowBox.getChildren().get(cardIndex)));
     }
 
     public void setCardImageToBackside(ImageView imageView) {

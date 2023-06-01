@@ -15,12 +15,12 @@
             <Image url="@../images/scene/WinPopup.png" />
         </image>
     </ImageView>
-   <Label fx:id="announcementLabel" alignment="CENTER" layoutX="34.0" layoutY="28.0" prefHeight="47.0" prefWidth="131.0" text="You win!" textAlignment="CENTER" textFill="WHITE">
+   <Label fx:id="announcementLabel" alignment="CENTER" layoutX="34.0" layoutY="27.0" prefHeight="47.0" prefWidth="131.0" text="You win!" textAlignment="CENTER" textFill="WHITE">
       <font>
          <Font name="Jokerman" size="28.0" />
       </font>
    </Label>
-   <Button fx:id="newGameButton" layoutX="54.0" layoutY="118.0" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="33.0" prefWidth="92.0" style="-fx-background-color: #18aaf3;" text="New game" textFill="WHITE">
+   <Button fx:id="newGameButton" layoutX="54.0" layoutY="113.0" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="33.0" prefWidth="92.0" style="-fx-background-color: #18aaf3;" text="New game" textFill="WHITE">
       <font>
          <Font name="Verdana" size="12.0" />
       </font>
@@ -37,7 +37,7 @@
          <Font name="Yu Gothic Medium" size="18.0" />
       </font>
    </Label>
-   <Button fx:id="quitButton" layoutX="70.0" layoutY="159.0" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #9733f7;" text="Quit" textFill="WHITE">
+   <Button fx:id="quitButton" layoutX="70.0" layoutY="154.0" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #9733f7;" text="Quit" textFill="WHITE">
       <font>
          <Font name="Verdana" size="12.0" />
       </font>
