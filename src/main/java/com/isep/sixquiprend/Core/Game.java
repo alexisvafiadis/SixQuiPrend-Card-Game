@@ -273,7 +273,11 @@ public class Game {
                 }
             }
         }
-        return players.indexOf(getMainPlayer()) + 1;
+        int playerRanking = players.indexOf(getMainPlayer()) + 1;
+/*        if (playerRanking == 1 && players.get(1).getBeefHeadCount() == getMainPlayer().getBeefHeadCount()) {
+            playerRanking = 0;
+        }*/
+        return playerRanking;
     }
 
     public void finishTurn() {
@@ -313,7 +317,7 @@ public class Game {
             end();
             return true;
         }
-        if ((getMainPlayer().getHand().size() == 0) || (!isThereAnyRowLeft())) {
+        if ((getMainPlayer().getHand().size() == 0 && (currentPlayerIndex == players.size() - 1))  || (!isThereAnyRowLeft())) {
             finishRound();
             return true;
         }

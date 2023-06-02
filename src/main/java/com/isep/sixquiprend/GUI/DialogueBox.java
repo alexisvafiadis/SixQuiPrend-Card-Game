@@ -22,7 +22,7 @@ public class DialogueBox {
         private final boolean TIMELINE_DEBUG = false;
         private int defaultWritingDelay = 42;
         private final int FAST_WRITING_DELAY = 15;
-        private final int VERY_FAST_WRITING_DELAY = 2;
+        private final int VERY_FAST_WRITING_DELAY = 3;
         private final int PAUSE_BETWEEN_MESSAGES = 9; // in loop iterations (depends on writing delay)
         private static DialogueBox instance;
         private Game game;

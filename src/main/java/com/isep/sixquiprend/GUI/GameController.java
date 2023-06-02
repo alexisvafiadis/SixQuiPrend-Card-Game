@@ -27,6 +27,7 @@ import java.util.concurrent.TimeUnit;
 public class GameController {
     private double classicCardAnimationDuration = 2;
     private  double shortCardAnimationDuration = 1;
+    private final double DEBUG_CARD_ANIMATION_DURATION = 0.3;
     private final String MAIN_PLAYER_CARD_ID_PREFIX = "card";
     private final String ROW_CARD_ID_PREFIX = "rowCard";
     @FXML
@@ -50,8 +51,8 @@ public class GameController {
         this.application = application;
         this.game = game;
         if (game.isInDebugMode()) {
-            classicCardAnimationDuration = 0.1;
-            shortCardAnimationDuration = 0.1;
+            classicCardAnimationDuration = DEBUG_CARD_ANIMATION_DURATION;
+            shortCardAnimationDuration = DEBUG_CARD_ANIMATION_DURATION;
         }
     }
     @FXML
