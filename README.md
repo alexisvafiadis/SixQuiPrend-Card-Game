@@ -25,8 +25,6 @@ The game is developed for single-player mode with the option to play against 1 t
 
 ## Project Structure
 
-The project is organized into several directories and files, each serving a distinct purpose in the development and execution of the game "6 qui prend!". Below is a breakdown of the key components of the codebase:
-
 ### Root Directory
 - **mvnw** & **mvnw.cmd**: Maven wrapper scripts that allow the project to be built without requiring Maven to be installed on the system.
 - **pom.xml**: The Maven Project Object Model file, which manages project dependencies, build configurations, and other settings.
@@ -76,8 +74,6 @@ This folder contains the images used in the game's GUI:
 ---
 
 ## Gameplay
-
-Below are the screenshots showcasing various parts of the game.
 
 ### 1. Home
 
