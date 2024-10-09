@@ -75,3 +75,45 @@ This folder contains the images used in the game's GUI:
 
 ---
 
+## Gameplay
+
+Below are the screenshots showcasing various parts of the game.
+
+### 1. Home
+
+<img src="Gameplay%20Images/Home.png" alt="Home Screen" width="450px"/>
+
+---
+
+### 2. Game Configuration
+This screen allows players to configure the game before starting. Players can set up options such as the number of players and other settings.
+
+<img src="Gameplay%20Images/Game%20Configuration.png" alt="Game Configuration" width="450px"/>
+
+---
+
+### 3. In game - Before playing a card
+This is the screen where the player chooses a card from their deck to play during the game.
+
+<img src="Gameplay%20Images/Game%20-%20Play%20a%20card.png" alt="Play a Card" width="450px"/>
+
+---
+
+### 4. In game - After playing a card
+This screenshot shows the game in action after a card has been played, illustrating how the board updates with the newly played cards. To see the animations, watch the video.
+
+<img src="Gameplay%20Images/Game%20-%20Animation%20after%20play.png" alt="Game Animation After Play" width="450px"/>
+
+
+---
+
+### 5. Game End
+
+<img src="Gameplay%20Images/Game%20end.png" alt="Game End" width="450px"/>
+
+## Demo Video
+
+
+[Watch the demo video](https://www.youtube.com/your-video-link-here)
+
+
